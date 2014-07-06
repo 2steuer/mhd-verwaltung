@@ -1,0 +1,737 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"DeleteChe",
+				"DeleteCheckRecordForm"
+			],
+			[
+				"record",
+				"record_id"
+			],
+			[
+				"backgroun",
+				"background-color"
+			],
+			[
+				"margi",
+				"margin-bottom"
+			],
+			[
+				"check",
+				"check_id"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"list-s",
+				"list-style-type"
+			],
+			[
+				"nav",
+				"nav-width"
+			],
+			[
+				"wrapper",
+				"wrapper-width"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "mysite/code/Pages/DevicePage.php",
+			"settings":
+			{
+				"buffer_size": 11639,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "mysite/code/Material/Check.php",
+			"settings":
+			{
+				"buffer_size": 1089,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "mysite/templates/Layout/DevicePage_detail.ss",
+			"settings":
+			{
+				"buffer_size": 2019,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "mysite/templates/Layout/DevicePage.ss",
+			"settings":
+			{
+				"buffer_size": 1046,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "mysite/css/format.less",
+			"settings":
+			{
+				"buffer_size": 4620,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "mysite/templates/Layout/SupplierPage.ss",
+			"settings":
+			{
+				"buffer_size": 528,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "mysite/code/Material/Supplier.php",
+			"settings":
+			{
+				"buffer_size": 784,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "mysite/code/Pages/SupplierPage.php",
+			"settings":
+			{
+				"buffer_size": 3337,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"",
+				"About"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/xampp/htdocs/prueftermine/framework/thirdparty/Zend/Locale/Data/so_DJ.xml",
+		"/C/xampp/htdocs/prueftermine/framework/sake",
+		"/C/xampp/htdocs/prueftermine/framework/security/LoginForm.php",
+		"/C/xampp/htdocs/prueftermine/framework/security/Authenticator.php",
+		"/C/xampp/htdocs/prueftermine/framework/security/MemberAuthenticator.php",
+		"/C/xampp/htdocs/prueftermine/framework/security/MemberLoginForm.php",
+		"/C/xampp/htdocs/prueftermine/debug.log",
+		"/C/xampp/htdocs/prueftermine/CONTRIBUTING.md",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Material/CheckRecord.php",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Material/Check.php",
+		"/C/xampp/htdocs/prueftermine/framework/forms/HtmlEditorSanitiser.php",
+		"/C/xampp/htdocs/prueftermine/framework/dev/LogEmailWriter.php",
+		"/C/xampp/htdocs/prueftermine/themes/simple/LICENSE",
+		"/C/xampp/htdocs/prueftermine/mysite/templates/Layout/DevicePage.ss",
+		"/C/xampp/htdocs/prueftermine/mysite/css/format.less",
+		"/C/xampp/htdocs/prueftermine/mysite/code/EmailNotification/NotificationNote.php",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Material/Supplier.php",
+		"/C/xampp/htdocs/prueftermine/mysite/templates/Layout/DevicePage_detail.ss",
+		"/C/xampp/htdocs/prueftermine/mysite/templates/Layout/DevicePage_edit.ss",
+		"/C/xampp/htdocs/prueftermine/mysite/code/MemberExtension.php",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Pages/CategoryPage.php",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Material/DeviceCategory.php",
+		"/C/xampp/htdocs/prueftermine/mysite/_config/config.yml",
+		"/C/xampp/htdocs/prueftermine/mysite/_config/routes.yml",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Pages/CheckTypePage.php",
+		"/C/xampp/htdocs/prueftermine/framework/forms/Form.php",
+		"/C/xampp/htdocs/prueftermine/mysite/templates/Page.ss",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Pages/SubscriptionPage.php",
+		"/C/xampp/htdocs/prueftermine/mysite/code/EmailNotification/SendEmailController.php",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Material/ElectronicalDevice.php",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Material/Place.php",
+		"/C/xampp/htdocs/prueftermine/mysite/templates/email/NotificationEmail.ss",
+		"/C/Users/Merlin/AppData/Local/Temp/fz3temp-1/_config.php",
+		"/C/xampp/htdocs/prueftermine/mysite/templates/Layout/SupplierPage.ss",
+		"/C/xampp/htdocs/prueftermine/framework/css/Form.css",
+		"/C/xampp/htdocs/prueftermine/framework/thirdparty/jstree/_docs/types.html",
+		"/C/xampp/htdocs/prueftermine/themes/simple/css/typography.css",
+		"/C/xampp/htdocs/prueftermine/cms/lang/th.yml",
+		"/C/xampp/htdocs/prueftermine/.htaccess",
+		"/C/xampp/htdocs/prueftermine/framework/scss/_elementMixins.scss",
+		"/C/xampp/htdocs/prueftermine/mysite/_config.php",
+		"/C/xampp/htdocs/prueftermine/framework/admin/scss/themes/_default.scss",
+		"/C/Users/Merlin/AppData/Local/Temp/fz3temp-1/.htaccess",
+		"/C/Users/Merlin/AppData/Local/Temp/fz3temp-1/DevicePage.php",
+		"/C/xampp/htdocs/prueftermine/cms/javascript/CMSMain.AddForm.js",
+		"/C/xampp/htdocs/prueftermine/cms/lang/da.yml",
+		"/C/xampp/htdocs/prueftermine/mysite/templates/Layout/DevicePage_form.ss",
+		"/C/Users/Merlin/AppData/Local/Temp/fz3temp-1/DevicePage.ss",
+		"/C/xampp/htdocs/prueftermine/framework/forms/CheckboxField.php",
+		"/C/xampp/htdocs/prueftermine/framework/templates/forms/CheckboxField_holder.ss",
+		"/C/xampp/htdocs/prueftermine/mysite/templates/Layout/SubscriptionPage.ss",
+		"/C/xampp/htdocs/prueftermine/framework/thirdparty/Zend/Locale/Data/es_SV.xml",
+		"/C/xampp/htdocs/prueftermine/framework/admin/templates/Includes/LeftAndMain_SilverStripeNavigator.ss",
+		"/C/xampp/htdocs/prueftermine/framework/search/filters/LessThanOrEqualFilter.php",
+		"/C/xampp/htdocs/prueftermine/mysite/js/less-1.3.3.min.js",
+		"/C/xampp/htdocs/prueftermine/framework/search/filters/LessThanFilter.php",
+		"/C/xampp/htdocs/prueftermine/mysite/templates/Layout/Page.ss",
+		"/C/xampp/htdocs/prueftermine/framework/thirdparty/tinymce-spellchecker/classes/PSpellShell.php",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Pages/DevicePage.php",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Material/Device.php",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Material/CheckType.php",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Pages/SupplierPage.php",
+		"/C/xampp/htdocs/prueftermine/mysite/templates/Layout/CheckTypePage.ss",
+		"/C/Users/Merlin/AppData/Local/Temp/fz3temp-1/.htaccess 2",
+		"/C/Users/Merlin/AppData/Local/Temp/fz3temp-1/error_log",
+		"/C/xampp/htdocs/prueftermine/mysite/templates/Layout/CategoryPage.ss",
+		"/C/xampp/htdocs/prueftermine/framework/_config.php",
+		"/C/xampp/htdocs/prueftermine/cms/_config.php",
+		"/C/xampp/htdocs/prueftermine/framework/thirdparty/zend_translate_railsyaml/library/Translate/Adapter/thirdparty/sfYaml/lib/sfYamlParser.php",
+		"/C/xampp/htdocs/prueftermine/themes/simple/css/layout.css",
+		"/C/xampp/htdocs/prueftermine/framework/security/LoginAttempt.php",
+		"/C/xampp/htdocs/prueftermine/framework/thirdparty/simpletest/page.php",
+		"/C/xampp/htdocs/prueftermine/framework/thirdparty/tinymce/themes/advanced/source_editor.htm",
+		"/C/xampp/htdocs/prueftermine/cms/templates/Includes/AssetAdmin_EditForm.ss",
+		"/C/xampp/htdocs/prueftermine/framework/thirdparty/jasmine/MIT.LICENSE",
+		"/C/xampp/htdocs/prueftermine/cms/templates/Includes/CMSMain_EditForm.ss",
+		"/C/xampp/htdocs/prueftermine/framework/admin/javascript/LeftAndMain.ActionTabSet.js",
+		"/C/xampp/htdocs/prueftermine/framework/admin/templates/Includes/ModelAdmin_Tools.ss",
+		"/C/xampp/htdocs/prueftermine/Makefile",
+		"/C/xampp/htdocs/prueftermine/framework/forms/FormAction.php",
+		"/C/xampp/htdocs/prueftermine/cms/lang/fo.yml",
+		"/C/xampp/htdocs/prueftermine/install-frameworkmissing.html",
+		"/C/xampp/htdocs/prueftermine/mysite/code/SiteConfigExtension.php",
+		"/C/Users/Merlin/AppData/Local/Temp/fz3temp-2/.htaccess",
+		"/C/Users/Merlin/AppData/Local/Temp/fz3temp-2/_config 2.php",
+		"/C/Users/Merlin/AppData/Local/Temp/fz3temp-2/_config.php",
+		"/C/Users/Merlin/AppData/Local/Temp/fz3temp-2/_config.ph_",
+		"/C/xampp/htdocs/prueftermine/mysite/templates/Layout/SupplierPage_form.ss",
+		"/C/xampp/htdocs/prueftermine/ss-multiupload/code/MultiUploadField.php",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Page.php",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Stuff/CancelFormAction.php",
+		"/C/xampp/htdocs/prueftermine/smtp/_config.php",
+		"/C/xampp/htdocs/prueftermine/smtp/README.md",
+		"/C/xampp/htdocs/prueftermine/framework/thirdparty/Zend/Locale/Data/en_VI.xml",
+		"/C/xampp/htdocs/prueftermine/framework/dev/DebugView.php",
+		"/C/xampp/htdocs/prueftermine/framework/model/DataExtension.php",
+		"/C/xampp/php/php.ini",
+		"/C/xampp/htdocs/prueftermine/cms/javascript/SiteTreeURLSegmentField.js",
+		"/C/xampp/htdocs/prueftermine/framework/thirdparty/Zend/Locale/Data/ss_ZA.xml",
+		"/C/xampp/htdocs/prueftermine/framework/thirdparty/Zend/Locale/Data/pa_Arab.xml",
+		"/C/xampp/htdocs/prueftermine/project.sublime-project",
+		"/C/xampp/htdocs/prueftermine/mysite/templates/Layout/DevicePage_index.ss",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Admins/DeviceAdmin.php",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Admins/SupplierAdmin.php",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Admins/CheckAdmin.php",
+		"/C/xampp/htdocs/prueftermine/cms/_config/routes.yml",
+		"/C/xampp/htdocs/prueftermine/silverstripe-localdate/_config/config.yml",
+		"/C/xampp/htdocs/prueftermine/silverstripe-localdate/_config.php",
+		"/C/xampp/htdocs/prueftermine/localdate/code/LocalDate.php",
+		"/C/xampp/htdocs/prueftermine/localdate/lang/de.yml",
+		"/C/xampp/htdocs/prueftermine/localdate/_config/config.yml",
+		"/C/xampp/htdocs/prueftermine/localdate/composer.json",
+		"/C/xampp/htdocs/prueftermine/localdate/_config.php",
+		"/C/Users/Merlin/AppData/Local/Temp/fz3temp-1/AppointmentAdmin.php",
+		"/C/tmp/config.yml",
+		"/C/Users/Merlin/AppData/Local/Temp/fz3temp-1/Page.ss",
+		"/C/xampp/htdocs/yii/framework/yiic.bat",
+		"/C/tmp/page.php",
+		"/C/Users/Merlin/AppData/Local/Temp/fz3temp-1/format.less",
+		"/C/Users/Merlin/AppData/Local/Temp/fz3temp-1/header.php",
+		"/C/Users/Merlin/AppData/Local/Temp/fz3temp-1/format 2.less",
+		"/C/xampp/htdocs/prueftermine/mysite/code/Material/Object.php",
+		"/C/xampp/htdocs/prueftermine/protected/config/main.php",
+		"/C/xampp/htdocs/pruefdatum/protected/config/main.php"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"size",
+			"            \n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "mysite/code/Pages/DevicePage.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11639,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								429,
+								429
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "mysite/code/Material/Check.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1089,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								461,
+								461
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "mysite/templates/Layout/DevicePage_detail.ss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2019,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1432,
+								1432
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1241.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "mysite/templates/Layout/DevicePage.ss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1046,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "mysite/css/format.less",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4620,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4234,
+								4234
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3671.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "mysite/templates/Layout/SupplierPage.ss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 528,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "mysite/code/Material/Supplier.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 784,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								321,
+								321
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "mysite/code/Pages/SupplierPage.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3337,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1642,
+								1642
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 585.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "project.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"suppp",
+				"mysite\\code\\Pages\\SupplierPage.php"
+			],
+			[
+				"suppli",
+				"mysite\\code\\Material\\Supplier.php"
+			],
+			[
+				"supp",
+				"mysite\\templates\\Layout\\SupplierPage.ss"
+			],
+			[
+				"devpa",
+				"mysite\\templates\\Layout\\DevicePage.ss"
+			],
+			[
+				"check",
+				"mysite\\code\\Material\\Check.php"
+			],
+			[
+				"less",
+				"mysite\\css\\format.less"
+			],
+			[
+				"devicepa",
+				"mysite\\templates\\Layout\\DevicePage.ss"
+			],
+			[
+				"device",
+				"mysite\\templates\\Layout\\DevicePage_detail.ss"
+			],
+			[
+				"suppl",
+				"mysite\\code\\Material\\Supplier.php"
+			],
+			[
+				"form.php",
+				"framework\\forms\\Form.php"
+			],
+			[
+				"typepa",
+				"mysite\\code\\Pages\\CheckTypePage.php"
+			],
+			[
+				".less",
+				"mysite\\css\\format.less"
+			],
+			[
+				"_edit",
+				"mysite\\templates\\Layout\\DevicePage_edit.ss"
+			],
+			[
+				"_detail",
+				"mysite\\templates\\Layout\\DevicePage_detail.ss"
+			],
+			[
+				"devpag",
+				"mysite\\code\\Pages\\DevicePage.php"
+			],
+			[
+				"cate",
+				"mysite\\code\\Pages\\CategoryPage.php"
+			],
+			[
+				"pss",
+				"mysite\\templates\\Page.ss"
+			],
+			[
+				"devcat",
+				"mysite\\code\\Material\\DeviceCategory.php"
+			],
+			[
+				"devicepage",
+				"mysite\\code\\Pages\\DevicePage.php"
+			],
+			[
+				"_co",
+				"mysite\\_config.php"
+			],
+			[
+				"laypag",
+				"mysite\\templates\\Layout\\Page.ss"
+			],
+			[
+				"page",
+				"mysite\\templates\\Page.ss"
+			],
+			[
+				"matsup",
+				"mysite\\code\\Material\\Supplier.php"
+			],
+			[
+				"supplierp",
+				"mysite\\templates\\Layout\\SupplierPage.ss"
+			],
+			[
+				"formatless",
+				"mysite\\css\\format.less"
+			],
+			[
+				"devicep",
+				"mysite\\templates\\Layout\\DevicePage.ss"
+			],
+			[
+				"dev_de",
+				"mysite\\templates\\Layout\\DevicePage_detail.ss"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
