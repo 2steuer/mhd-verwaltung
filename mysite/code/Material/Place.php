@@ -12,7 +12,7 @@ class Place extends DataObject {
 	static $field_labels = array('Description' => 'Bemerkungen');
 
 	static $singular_name = 'Ort';
-	static $plural_name = 'OrDte';
+	static $plural_name = 'Orte';
 
 
 	public function getFrontendFields($params = null) {

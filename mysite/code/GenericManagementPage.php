@@ -6,7 +6,7 @@ class GenericManagementPage extends Page {
 			'ShowView' => 'Boolean',
 			'ShowEdit' => 'Boolean',
 			'ShowDelete' => 'Boolean',
-			'ShowAdd' => 'Boolean',
+			'ShowAdd' => 'Boolean'
 			);
 
 	public function getCMSFields() {
@@ -39,6 +39,7 @@ class GenericManagementPage_Controller extends Page_Controller {
 		'add',
 		'delete',
 		'edit',
+		'print',
 		'RecordForm',
 		'DeleteForm'
 	);
