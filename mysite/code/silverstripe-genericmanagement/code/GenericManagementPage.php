@@ -56,7 +56,7 @@ class GenericManagementPage_Controller extends Page_Controller {
 	*/
 
 	public function ActiveRecords() {
-		$objects = DataObject::get($this->ModelName)->filter(array('Active' => '1'));
+		$objects = DataObject::get($this->ModelName)->filter(array('Active' => '1'))->sort('Name');
 		return $objects;
 	}
 
@@ -153,13 +153,13 @@ class GenericManagementPage_Controller extends Page_Controller {
 	public function view($request) {
 		$id = $request->param('ID');
 
-		$record = DataObject::get($this->ModelName)->byID(Session::get('record_id'));
+		$record = DataObject::get($this->ModelName)->byID($id);
 
 		if(!$record) {
 			return $this->httpError(404, 'Object not found.');
 		}
 
-		return $this->renderWith(array($this->ModelName.'_view', 'GenericManagement_view', 'Page'), array('Record' => $record))
+		return $this->renderWith(array($this->ModelName.'_view', 'GenericManagement_view', 'Page'), array('Record' => $record, 'Title'=>'Details: '.$record->Name));
 	}
 
 	/*
