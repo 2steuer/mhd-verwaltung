@@ -11,6 +11,9 @@ class ElectronicalDevice extends DataObject {
 
 	public static $defaults = array('Active' => '1');
 
+	static $field_labels = array('Name' => 'Bezeichnung',
+		'Description' => 'Bemerkungen');
+
 	static $has_one = array(
 			'Place' => 'Place'
 		);

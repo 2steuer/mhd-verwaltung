@@ -9,6 +9,8 @@ class Place extends DataObject {
 
 	public static $defaults = array('Active' => '1');
 
+	static $field_labels = array('Description' => 'Bemerkungen');
+
 	static $singular_name = 'Ort';
 	static $plural_name = 'OrDte';
 
