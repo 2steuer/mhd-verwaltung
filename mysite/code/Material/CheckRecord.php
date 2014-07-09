@@ -1,13 +1,11 @@
 <?php
 
-class CheckRecord extends DataObject {
+class CheckRecord extends MaterialDataObject {
 	public static $db = array(
 			'Date' => 'Date',
-			'Comment'=>'Text',
-			'Active'=>'Boolean'
+			'Comment'=>'Text'
 		);
 
-	static $defaults = array('Active'=>'1');
 
 	public static $has_one = array('Check' => 'Check',
 		'CheckDocument' => 'File',

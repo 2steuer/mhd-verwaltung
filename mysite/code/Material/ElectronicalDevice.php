@@ -1,15 +1,12 @@
 <?php
 
-class ElectronicalDevice extends DataObject {
+class ElectronicalDevice extends MaterialDataObject {
 	static $db = array(
 			'Name' => 'Varchar',
 			'Description' => 'Text',
-			'Barcode' => 'Varchar',
-			'Active' => 'Boolean'
-
+			'Barcode' => 'Varchar'
 		);
 
-	public static $defaults = array('Active' => '1');
 
 	static $field_labels = array('Name' => 'Bezeichnung',
 		'Description' => 'Bemerkungen');

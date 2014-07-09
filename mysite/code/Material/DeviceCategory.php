@@ -1,13 +1,10 @@
 <?php
 
-class DeviceCategory extends DataObject {
+class DeviceCategory extends MaterialDataObject {
 	static $db = array(
 		'Name' => 'Varchar',
-		'Description' => 'Text',
-		'Active' => 'Boolean'
+		'Description' => 'Text'
 	);
-
-	static $defaults = array('Active' => '1');
 
 	static $has_many = array('Devices' => 'Device');
 

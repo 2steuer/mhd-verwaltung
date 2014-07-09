@@ -1,13 +1,10 @@
 <?php
 
-class Check extends DataObject {
+class Check extends MaterialDataObject {
 	static $db = array(
 			'NextCheck' => 'Date',
-			'Comment' => 'Text',
-			'Active' => 'Boolean'
+			'Comment' => 'Text'
 		);
-
-	static $defaults = array('Active' => '1');
 
 	static $has_one = array(
 			'Supplier' => 'Supplier',

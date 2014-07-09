@@ -1,13 +1,11 @@
 <?php
 
-class Place extends DataObject {
+class Place extends MaterialDataObject {
 	static $db = array(
 			'Name' => 'Varchar',
-			'Description' => 'Text',
-			'Active' => 'Boolean'
+			'Description' => 'Text'
 		);
 
-	public static $defaults = array('Active' => '1');
 
 	static $field_labels = array('Description' => 'Bemerkungen');
 

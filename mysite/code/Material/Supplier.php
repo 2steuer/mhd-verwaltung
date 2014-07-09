@@ -1,6 +1,6 @@
 <?php
 
-class Supplier extends DataObject {
+class Supplier extends MaterialDataObject {
 	static $db = array(
 			'Name' => 'Varchar',
 			'ContactName' => 'Varchar',
@@ -11,11 +11,9 @@ class Supplier extends DataObject {
 			'Web' => 'Varchar',
 			'Email' => 'Varchar',
 			'Fax' => 'Varchar',
-			'CustomerNumber' => 'Varchar',
-			'Active'=>'Boolean'
+			'CustomerNumber' => 'Varchar'
 		);
 
-	static $defaults = array('Active'=>'1');
 
 	static $has_many = array('Devices' => 'Device');
 

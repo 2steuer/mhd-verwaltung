@@ -1,11 +1,10 @@
 <?php
-class Device extends DataObject {
+class Device extends MaterialDataObject {
 	public static $db = array(
 			'Name' => 'Text',
 			'Description' => 'Text',
 			'Barcode' => 'Varchar',
-			'Serial' => 'Varchar',
-			'Active' => 'Boolean'
+			'Serial' => 'Varchar'
 		);
 
 	static $has_many = array(
@@ -22,7 +21,6 @@ class Device extends DataObject {
 
 	public static $summary_fields = array(
 		'Name' => 'Bezeichnung');
-	public static $defaults = array('Active' => '1');
 
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();

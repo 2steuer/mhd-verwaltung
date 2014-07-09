@@ -1,12 +1,10 @@
 <?php
 
-class CheckType extends DataObject {
+class CheckType extends MaterialDataObject {
 
 	static $db = array(
 			'Name' => 'Varchar',
-			'Description' => 'Text',
-			'Active' => 'Boolean'
+			'Description' => 'Text'
 		);
 
-	static $defaults = array('Active' => '1');
 }
