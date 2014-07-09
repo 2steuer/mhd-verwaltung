@@ -6,4 +6,6 @@ class Resource extends MaterialDataObject {
 			'Description' => 'Text',
 			'Quantity' => 'Int'
 		);
+
+	static $has_one = array('Category' => 'ResourceCategory');
 }
