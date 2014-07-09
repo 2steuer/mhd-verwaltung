@@ -10,7 +10,7 @@ class GenericManagementPage extends Page {
 			);
 
 	public function getCMSFields() {
-		$classes = ClassInfo::subclassesFor('DataObject');
+		$classes = ClassInfo::subclassesFor('MaterialDataObject');
 		asort($classes);
 		$map = array_combine($classes, $classes);
 
@@ -47,7 +47,7 @@ class GenericManagementPage_Controller extends Page_Controller {
 	public function init() {
 		parent::init();
 
-		if(!$this->ModelName || !(singleton($this->ModelName) instanceof DataObject)) {
+		if(!$this->ModelName || !(singleton($this->ModelName) instanceof MaterialDataObject)) {
 			return $this->httpError(500, 'Interner Fehler. ModelName nicht korrekt.');
 		}
 	}
