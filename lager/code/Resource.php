@@ -4,8 +4,12 @@ class Resource extends MaterialDataObject {
 	static $db = array(
 			'Name' => 'Varchar',
 			'Description' => 'Text',
-			'Quantity' => 'Int'
+			'Barcode' => 'Varchar',
+			'Quantity' => 'Int',
+			'WarningQuantity' => 'Int',
+			'MinimumQuantity' => 'Int'
 		);
 
-	static $has_one = array('Category' => 'ResourceCategory');
+	static $has_one = array('Category' => 'ResourceCategory',
+		'Picture' => 'Image');
 }

@@ -10,7 +10,8 @@ class Booking extends MaterialDataObject {
 		'Booked' => 'Boolean'
 	);
 
-	static $has_one = array('Member' => 'Member');
+	static $has_one = array('Member' => 'Member',
+		'Attachment' => 'File');
 
 	static $has_many = array('Entries' => 'BookingEntry');
 }
