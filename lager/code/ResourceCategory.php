@@ -8,4 +8,7 @@ class ResourceCategory extends MaterialDataObject {
 		);
 
 	static $has_many = array('Resources' => 'Resource');
+
+	static $singular_name = "Artikelkategorie";
+	static $plural_name = "Artikelkategorien";
 }

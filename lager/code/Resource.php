@@ -12,4 +12,7 @@ class Resource extends MaterialDataObject {
 
 	static $has_one = array('Category' => 'ResourceCategory',
 		'Picture' => 'Image');
+
+	static $singular_name = "Artikel";
+	static $plural_name = "Artikel";
 }

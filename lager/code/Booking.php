@@ -14,4 +14,7 @@ class Booking extends MaterialDataObject {
 		'Attachment' => 'File');
 
 	static $has_many = array('Entries' => 'BookingEntry');
+
+	static $singular_name = "Vorgang";
+	static $plural_name = "Vorgänge";
 }
