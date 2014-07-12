@@ -156,6 +156,7 @@ class GenericManagementPage_Controller extends Page_Controller {
 	function doDelete($data, $form) {
 		$record = DataObject::get($this->ModelName)->byID(Session::get('record_id'));
 		$record->Active = '0';
+
 		$record->write();
 
 		return $this->redirect('index');
@@ -173,7 +174,15 @@ class GenericManagementPage_Controller extends Page_Controller {
 			return $this->httpError(404, 'Object not found.');
 		}
 
-		return $this->renderWith(array($this->ModelName.'_view', 'GenericManagement_view', 'Page'), array('Record' => $record, 'Title'=>'Details: '.$record->Name));
+		if($record->hasMethod('Name')) {
+			$name = $record->Name();
+			print("Juhu");
+		}
+		else {
+			$name = $record->Name;
+		}
+
+		return $this->renderWith(array($this->ModelName.'_view', 'GenericManagement_view', 'Page'), array('Record' => $record, 'Title'=>'Details: '.$name));
 	}
 
 	/*

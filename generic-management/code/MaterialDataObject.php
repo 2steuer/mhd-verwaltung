@@ -20,5 +20,4 @@ class MaterialDataObject extends DataObject {
 	public function join_field() {
 		return $this->stat('join_field');
 	}
-
 }
