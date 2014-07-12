@@ -57,12 +57,18 @@ class GenericManagementPage_Controller extends Page_Controller {
 	*/
 
 	public function ActiveRecords() {
-		$sort_field = singleton($this->ModelName)->sort_by_name();
+		$sing = singleton($this->ModelName);
+
+		$sort_field = $sing->sort_field();
 
 		$objects = DataObject::get($this->ModelName)->filter(array('Active' => '1'));
 
+		if($tbl = $sing->join_table()) {
+			$objects->leftJoin($tbl, $sing->join_field()." = ".$tbl.".ID");
+		}
+
 		if($sort_field) {
-			$objects = $objects->sort(array('Name' => 'ASC'));
+			$objects = $objects->sort(array($sort_field => 'ASC'));
 		}
 
 		return $objects;
