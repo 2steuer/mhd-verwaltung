@@ -23,14 +23,14 @@ class Clothing extends MaterialDataObject {
 
 	public function getFrontendFields($params = null) {
 		$fields = new FieldList(
-			DropDownField::create('Type', 'Kleidungstyp')
+			DropDownField::create('TypeID', 'Kleidungstyp')
 				->setSource(ClothingType::get()
 					->filter('Active', '1')
 					->map('ID', 'Name')
 					),
 			TextField::create('Size', 'Größe'),
 			TextField::create('IDCode', 'ID-Nummer'),
-			DropDownField::create('Owner', 'Helfer')
+			DropDownField::create('OwnerID', 'Helfer')
 				->setSource(
 						StaffMember::get()
 							->filter('Active', '1')
@@ -41,5 +41,15 @@ class Clothing extends MaterialDataObject {
 		);
 
 		return $fields;
+	}
+
+	public function Name() {
+		return $this->Type()->Name . " (".$this->Size.")";
+	}
+
+	public function onBeforeWrite() {
+		if($this->Active == '0') {
+			$this->OwnerID = '';
+		}
 	}
 }
