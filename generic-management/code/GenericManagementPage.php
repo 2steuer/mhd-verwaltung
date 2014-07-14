@@ -41,7 +41,8 @@ class GenericManagementPage_Controller extends Page_Controller {
 		'edit',
 		'print',
 		'RecordForm',
-		'DeleteForm'
+		'DeleteForm',
+		'QuickSearchForm'
 	);
 
 	public function init() {
@@ -240,6 +241,32 @@ class GenericManagementPage_Controller extends Page_Controller {
 	}
 
 	/*
+	 *	QuickSearchForm
+	*/
+
+	public function QuickSearchForm() {
+		$fields = new FieldList(TextField::create('SearchValue', singleton($this->ModelName)->quick_search_label()));
+		$actions = new FieldList(FormAction::create('doQuickSearch', 'Suche'));
+
+		return new Form($this, 'QuickSearchForm', $fields, $actions);
+	}
+
+	public function doQuickSearch($data, $form) {
+		$value = $data['SearchValue'];
+
+		$result = DataObject::get($this->ModelName)
+				->filter(array(
+						singleton($this->ModelName)->quick_search_field() => $value
+					));
+		
+		if($result->Count() == 1) {
+			return $this->redirect($this->Link().'view/'.$result[0]->ID);
+		}
+		else {
+			return $this->redirectBack();
+		}
+	}
+	/*
 	 * Helper Functions
 	*/
 
@@ -249,5 +276,9 @@ class GenericManagementPage_Controller extends Page_Controller {
 
 	public function PluralName() {
 		return singleton($this->ModelName)->plural_name();
+	}
+
+	public function QuickSearchEnabled() {
+		return (singleton($this->ModelName)->quick_search_field() != '');
 	}
 }

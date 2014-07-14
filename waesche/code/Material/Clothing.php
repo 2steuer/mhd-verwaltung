@@ -21,6 +21,9 @@ class Clothing extends MaterialDataObject {
 	static $join_table = 'ClothingType';
 	static $join_field = 'TypeID';
 
+	static $quick_search_field = 'IDCode';
+	static $quick_search_label = 'ID';
+
 	public function getFrontendFields($params = null) {
 		$fields = new FieldList(
 			DropDownField::create('TypeID', 'Kleidungstyp')

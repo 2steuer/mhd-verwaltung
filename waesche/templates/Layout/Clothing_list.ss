@@ -1,3 +1,7 @@
+<% if QuickSearchEnabled %>
+<div id="quicksearchform">$QuickSearchForm</div>
+<% end_if %>
+
 <table class="record_list">
 <tr>
 	<th>Typ</th>
