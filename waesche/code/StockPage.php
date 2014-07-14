@@ -8,7 +8,7 @@ class StockPage_Controller extends Page_Controller {
 
 	public function StockClothing() {
 		return Clothing::get()
-			->filter('Active', '1')
+			->filter(array('Active' => '1', 'OwnerID' => ''))
 			->leftJoin('ClothingType', 'TypeID = ClothingType.ID')
 			->sort('ClothingType.Name');
 	}
