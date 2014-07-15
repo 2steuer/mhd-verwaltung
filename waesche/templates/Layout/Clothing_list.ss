@@ -1,8 +1,11 @@
 <% if QuickSearchEnabled %>
+<% if ActiveRecords %>
 <div id="quicksearchform">$QuickSearchForm</div>
+<% end_if %>
 <% end_if %>
 
 <% if ActiveRecords %>
+<form id="print_label_checkform" method="post" action="{$Link}printlabels">
 <table class="record_list">
 <tr>
 	<th>Typ</th>
@@ -25,7 +28,6 @@
 	<th>Label</th>
 </tr>
 
-<form id="print_label_checkform" method="post" action="printlabels">
 <% loop ActiveRecords %>
 <tr class="$EvenOdd">
 	<td class="col1">{$Type.Name}</td>
@@ -56,20 +58,24 @@
 
 </tr>
 <% end_loop %>
-</form>
-
 </table>
+</form>
 
 <div id="print_actions">
 Wählen: <a href="#" id="all_link">Alle</a> | <a href="#" id="none_link">Keine</a>
 </div>
 
-<% if ShowAdd %>
 <br />
-<a href="{$Top.Link}add">$SingularName hinzufügen</a>
+<% if ShowAdd %>
+<a href="{$Top.Link}add">$SingularName hinzufügen</a>&nbsp;
 <% end_if %>
+<a href="#" id="print_link">Gewählte Labels drucken</a>
 
 <% else %>
 Keine $PluralName vorhanden.
+<% if ShowAdd %>
+<br />
+<a href="{$Top.Link}add">$SingularName hinzufügen</a>&nbsp;
+<% end_if %>
 
 <% end_if %>

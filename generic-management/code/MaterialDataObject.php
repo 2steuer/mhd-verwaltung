@@ -5,14 +5,17 @@ class MaterialDataObject extends DataObject {
 
 	private static $defaults = array('Active' => '1');
 
-	private static $sort_field = true;
+	//private static $default_sort = 'Name';
+
 	private static $join_table = null;
 	private static $join_field = null;
 	private static $quick_search_field = '';
 	private static $quick_search_label = 'Name';
 
+	static $sort_field = 'Name';
+
 	public function sort_field() {
-		return $this->stat('sort_by_name');
+		return $this->stat('sort_field');
 	}
 
 	public function join_table() {

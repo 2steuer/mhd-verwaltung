@@ -17,9 +17,10 @@ class Clothing extends MaterialDataObject {
 
 	//static $default_sort = 'ClothingType.Name';
 
-	static $sort_field = "ClothingType.Name";
 	static $join_table = 'ClothingType';
 	static $join_field = 'TypeID';
+
+	static $sort_field = 'ClothingType.Name';
 
 	static $quick_search_field = 'IDCode';
 	static $quick_search_label = 'ID';

@@ -11,6 +11,12 @@ class ClothingPage_Controller extends GenericManagementPage_Controller {
 		'printstocklabels'
 	);
 
+	public function index($request) {
+		Requirements::javascript('waesche/js/label-checkboxes.js');
+
+		return parent::index($request);
+	}
+
 	public function printlabels($request) {
 		$clothes = Clothing::get()->filter(array('Active'=> '1', 'ID' => $request->postVar('SelectPrint')));
 
