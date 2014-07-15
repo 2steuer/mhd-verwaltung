@@ -14,7 +14,7 @@
 <td>Standort</td>
 <td>
 <% if Owner %>
-	$Owner.Name
+	<a href="{$Top.GenericPageLink(StaffMember, 'view/')}{$Owner.ID}">$Owner.Name</a>
 <% else %>
 	Lager
 <% end_if %>

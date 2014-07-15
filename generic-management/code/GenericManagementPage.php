@@ -177,7 +177,6 @@ class GenericManagementPage_Controller extends Page_Controller {
 
 		if($record->hasMethod('Name')) {
 			$name = $record->Name();
-			print("Juhu");
 		}
 		else {
 			$name = $record->Name;
@@ -280,5 +279,16 @@ class GenericManagementPage_Controller extends Page_Controller {
 
 	public function QuickSearchEnabled() {
 		return (singleton($this->ModelName)->quick_search_field() != '');
+	}
+
+	public function GenericPageLink($modelName, $action='') {
+		$page = DataObject::get_one('GenericManagementPage', 'ModelName = \''.$modelName."'");
+
+		if($page) {
+			return $page->Link($action);
+		}
+		else {
+			return '';
+		}
 	}
 }

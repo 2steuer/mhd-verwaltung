@@ -23,6 +23,7 @@
 <th>Kleidungsstück</th>
 <th>Größe</th>
 <th>ID</th>
+<th>Details</th>
 </tr>
 
 <% loop Clothings %>
@@ -30,6 +31,7 @@
 <td>$Type.Name</td>
 <td>$Size</td>
 <td>$IDCode</td>
+<td class="icon_col"><a href="{$Top.GenericPageLink(Clothing, 'view/')}{$ID}"><img src="mysite/img/clipboard.png" alt="Details" /></a></td>
 </tr>
 <% end_loop %>
 
