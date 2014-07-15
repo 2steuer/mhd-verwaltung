@@ -2,6 +2,7 @@
 <div id="quicksearchform">$QuickSearchForm</div>
 <% end_if %>
 
+<% if ActiveRecords %>
 <table class="record_list">
 <tr>
 	<th>Typ</th>
@@ -20,8 +21,11 @@
 	<% if ShowDelete %>
 	<th>Löschen</th>
 	<% end_if %>
+
+	<th>Label</th>
 </tr>
 
+<form id="print_label_checkform" method="post" action="printlabels">
 <% loop ActiveRecords %>
 <tr class="$EvenOdd">
 	<td class="col1">{$Type.Name}</td>
@@ -48,11 +52,24 @@
 <td class="icon_col"><a href="{$Top.Link}delete/$ID"><img src="mysite/img/trash.png" alt="Löschen" /></a></td>
 	<% end_if %>
 
+	<td class="icon_col"><input type="checkbox" name="SelectPrint[]" class="selectprintBox" value="$ID"></td>
+
 </tr>
 <% end_loop %>
+</form>
 
 </table>
+
+<div id="print_actions">
+Wählen: <a href="#" id="all_link">Alle</a> | <a href="#" id="none_link">Keine</a>
+</div>
+
 <% if ShowAdd %>
 <br />
 <a href="{$Top.Link}add">$SingularName hinzufügen</a>
+<% end_if %>
+
+<% else %>
+Keine $PluralName vorhanden.
+
 <% end_if %>

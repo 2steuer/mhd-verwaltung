@@ -12,4 +12,15 @@ class StockPage_Controller extends Page_Controller {
 			->leftJoin('ClothingType', 'TypeID = ClothingType.ID')
 			->sort('ClothingType.Name');
 	}
+
+	public function PrintLabelsLink() {
+		$page = DataObject::get_one('GenericManagementPage', 'ModelName = \'Clothing\'');
+
+		if($page) {
+			return $page->Link('printstocklabels');
+		}
+		else {
+			return '';
+		}
+	}
 }

@@ -17,7 +17,8 @@
 <% end_loop %>
 
 </table>
-
+<br />
+<a href="{$Top.PrintLabelsLink}">Kleidungslabels drucken</a>
 <% else %>
 <br />
 Keine Kleidung im Lager.
