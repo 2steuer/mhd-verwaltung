@@ -5,7 +5,7 @@
 <% end_if %>
 
 <% if ActiveRecords %>
-<form id="print_label_checkform" method="post" action="{$Link}printlabels">
+<form id="print_label_checkform" method="post" action="{$Link}printlabels" target="_blank">
 <table class="record_list">
 <tr>
 	<th>Typ</th>

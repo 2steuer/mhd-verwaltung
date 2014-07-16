@@ -18,7 +18,7 @@
 
 </table>
 <br />
-<a href="{$Top.PrintLabelsLink}">Kleidungslabels drucken</a>
+<a href="{$Top.PrintLabelsLink}" target="_blank">Kleidungslabels drucken</a>
 <% else %>
 <br />
 Keine Kleidung im Lager.

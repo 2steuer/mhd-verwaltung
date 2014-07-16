@@ -50,6 +50,11 @@ Eingeloggt als:<br />$CurrentMember.Surname, $CurrentMember.FirstName
 <div id="content">
 <h1>$Title</h1>
 $Layout
+<% if NotesEnabled %>
+<div id="notes_container">
+$NoteForm
+</div>
+<% end_if %>
 </div>
 
 </div>

@@ -319,9 +319,9 @@ form {
 .clothing_label {
     width: 6cm - 0.4cm;
     height: 2cm - 0.4cm;
-    border: 1px solid;
+    border: 1px dashed;
     float: left;
-    padding: 2mm;
+    padding: 1mm;
     margin: 0;
 
     .label_type {
@@ -337,4 +337,24 @@ form {
 
 form#print_label_checkform {
     clear: both;
+}
+
+#notes_container {
+    width: 100%;
+    border-top: 1px solid;
+    margin-top: 30px;
+    padding-top: 0.5em;
+
+    fieldset {
+        padding: 0;
+        label {
+            float: none;
+            margin-bottom: 1px;
+        }
+
+        textarea {
+            width: 100%;
+        }
+    }
+    
 }
