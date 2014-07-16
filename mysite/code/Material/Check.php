@@ -35,6 +35,7 @@ class Check extends MaterialDataObject {
 		$date = $this->dbObject('NextCheck');
 
 		if($date->InPast() || $date->IsToday()) {
+
 			return 2;
 		}
 
@@ -52,5 +53,13 @@ class Check extends MaterialDataObject {
 			return 2;
 		}
 	} 
+
+	public function onBeforeWrite() {
+		parent::onBeforeWrite();
+
+		if($this->Active = '0') {
+			$this->DeviceID = '';
+		}
+	}
 
 }

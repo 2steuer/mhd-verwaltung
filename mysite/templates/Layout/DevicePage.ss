@@ -2,7 +2,7 @@
 <% loop Categories %>
 
 <h2>$Name</h2>
-<% if Devices %>
+<% if ActiveDevices %>
 
 <table class="deviceTable">
 <tr>

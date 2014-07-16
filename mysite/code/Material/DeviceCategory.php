@@ -9,4 +9,8 @@ class DeviceCategory extends MaterialDataObject {
 	static $has_many = array('Devices' => 'Device');
 
 	static $belongs_many_many = array('Subscribers' => 'Member');
+
+	public function ActiveDevices() {
+		return Device::get()->filter(array('CategoryID' => $this->ID, 'Active' => '1'));
+	}
 }

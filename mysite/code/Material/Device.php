@@ -30,4 +30,8 @@ class Device extends MaterialDataObject {
 
 		return $fields;
 	}
+
+	public function onBeforeWrite() {
+		parent::onBeforeWrite();
+	}
 }
