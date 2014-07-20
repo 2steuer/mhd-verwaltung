@@ -59,4 +59,19 @@ class Clothing extends MaterialDataObject {
 			$this->OwnerID = '';
 		}
 	}
+
+	public function validate() {
+		$val = parent::validate();
+
+		$filter = array();
+		$filter['IDCode'] = $this->IDCode();
+
+		/*if(isset($id = $this->ID)) {
+			$filter['ID'] = $id;
+		}*/
+
+		$qry = Clothing::get()->filter($filter);
+
+		return $val;
+	}
 }
