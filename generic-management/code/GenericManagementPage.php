@@ -293,4 +293,10 @@ class GenericManagementPage_Controller extends Page_Controller {
 			return '';
 		}
 	}
+
+	public function FormError() {
+		$err = Session::get('form_error');
+		Session::clear('form_error');
+		return $err;
+	}
 }
