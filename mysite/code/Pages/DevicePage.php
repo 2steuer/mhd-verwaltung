@@ -367,7 +367,7 @@ class DevicePage_Controller extends Page_Controller {
 
 		Session::clear('category_id');
 
-		return $this->redirect('index');
+		return $this->redirect($this->Link().'edit/'.$dev->ID);
 	}
 
 	public function edit_device_action($data, Form $form) {

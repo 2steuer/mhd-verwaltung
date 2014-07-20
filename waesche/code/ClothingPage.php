@@ -36,4 +36,13 @@ class ClothingPage_Controller extends GenericManagementPage_Controller {
 
 		return $this->renderWith(array('Clothing_labels', 'Page'), array('Clothings' => $clothes));
 	}
+
+	public function SearchForm() {
+		$fields = new FieldList(
+			DropDownField::create('TypeID', 'Typ')
+				->setSource(ClothingType::get()->filter(array('Active', '1'))->map('ID', 'Name')),
+			TextField::create('Size', 'Größe'),
+			TextField::create('IDCode', 'ID')
+		);
+	}
 }
