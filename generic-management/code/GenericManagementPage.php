@@ -92,18 +92,39 @@ class GenericManagementPage_Controller extends Page_Controller {
 	public function add($request) {
 		Session::set('form_action', 'add');
 
-		return $this->renderWith(array($this->ModelName.'_add', 'GenericManagement_form', 'Page'), array('Form' => $this->RecordForm()));
+		$form = $this->RecordForm();
+
+		if(!empty(Session::get('form_data'))) {
+			$form->loadDataFrom(Session::get('form_data'));
+			Session::clear('form_data');
+		}
+
+		return $this->renderWith(array($this->ModelName.'_add', 'GenericManagement_form', 'Page'), array('Form' => $form));
 	}
 
 
 	function doAdd($data, $form) {
 		$record = new $this->ModelName();
 		$form->saveInto($record);
+
+		$result = $record->validate();
+
+		if(!$result->valid()) {
+			Session::set('form_error', $result->message());
+			Session::set('form_data', $data);
+			return $this->redirect('add');
+		}
+
 		$record->write();
 
 		return $this->redirect('index');
 	}
 
+	public function ErrorMessage() {
+		$msg = Session::get('form_error');
+		Session::clear('form_error');
+		return $msg;
+	}
 	/*
 	** Editing 
 	*/

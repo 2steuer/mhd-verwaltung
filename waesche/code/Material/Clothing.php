@@ -38,6 +38,7 @@ class Clothing extends MaterialDataObject {
 				->setSource(
 						StaffMember::get()
 							->filter('Active', '1')
+							->sort('Name')
 							->map('ID', 'Name')
 					)
 				->setEmptyString('Lager'),
@@ -57,5 +58,28 @@ class Clothing extends MaterialDataObject {
 		if($this->Active == '0') {
 			$this->OwnerID = '';
 		}
+	}
+
+	public function validate() {
+		$result = parent::validate();
+
+		if(strtolower($this->IDCode) == 'neu') {
+			return $result;
+		}
+
+		$filter = array();
+		$filter['IDCode'] = $this->IDCode;
+
+		if($this->ID) {
+			$filter['ID:not'] = $this->ID;
+		}
+
+		$dat = Clothing::get()->filter($filter);
+
+		if($dat->Count() > 0) {
+			$result->error('Kleidungsstück mit dieser ID bereits vorhanden!', 'IDCode');
+		}
+
+		return $result;
 	}
 }

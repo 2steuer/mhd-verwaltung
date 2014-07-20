@@ -3,6 +3,7 @@
 class StaffMember extends MaterialDataObject {
 	static $db = array(
 		'Name' => 'Varchar',
+		'StaffNumber' => 'Varchar',
 		'Notes' => 'Text'
 	);
 
@@ -13,7 +14,7 @@ class StaffMember extends MaterialDataObject {
 	static $singular_name = 'Helfer';
 	static $plural_name = 'Helfer';
 
-	static $field_labels = array('Notes' => 'Bemerkungen');
+	static $field_labels = array('Notes' => 'Bemerkungen', 'StaffNumber' => 'Mitarbeiternummer');
 
 	public function getFrontendFields($params = null) {
 		$fields = parent::getFrontendFields($params);
