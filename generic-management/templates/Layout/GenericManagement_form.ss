@@ -1,4 +1,4 @@
-<% if ErrorMessage %>
-<span class="error">$ErrorMessage</span>
+<% if FormError %>
+<span class="error">$FormError</span>
 <% end_if %>
 $Form
