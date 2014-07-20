@@ -99,6 +99,15 @@ class GenericManagementPage_Controller extends Page_Controller {
 	function doAdd($data, $form) {
 		$record = new $this->ModelName();
 		$form->saveInto($record);
+
+		$val = $record->validate();
+
+		if(!$val->valid()) {
+			Session::set('form_error', $val->message());
+			Session::set('form_data', $data);
+			return $this->redirect('add');
+		}
+
 		$record->write();
 
 		return $this->redirect('index');
@@ -118,7 +127,7 @@ class GenericManagementPage_Controller extends Page_Controller {
 		}
 
 		Session::set('record_id', $id);
-	
+		
 		return $this->renderWith(
 				array(
 					$this->ModelName.'_edit',
@@ -134,6 +143,16 @@ class GenericManagementPage_Controller extends Page_Controller {
 	function doEdit($data, $form) {
 		$record = DataObject::get($this->ModelName)->byID(Session::get('record_id'));
 		$form->saveInto($record);
+
+		$val = $record->validate();
+
+		if(!$val->valid()) {
+			Session::set('form_error', $val->message());
+			Session::set('form_data', $data);
+			return $this->redirect($this->Link().'edit/'.$record->ID);
+		}
+
+
 		$record->write();
 
 		return $this->redirect('index');
@@ -218,11 +237,17 @@ class GenericManagementPage_Controller extends Page_Controller {
 			);
 
 		$form = new Form($this, 'RecordForm', $fields, $actions);
-
+		
 		if($action == 'edit')  {
 			$form->loadDataFrom($record);
 		}
 
+		if(Session::get('form_data'))
+		{
+			$form->loadDataFrom(Session::get('form_data'));
+			Session::clear('form_data');
+		}
+		
 		return new Form($this, 'RecordForm', $fields, $actions);
 	}
 

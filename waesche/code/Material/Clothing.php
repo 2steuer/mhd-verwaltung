@@ -63,14 +63,22 @@ class Clothing extends MaterialDataObject {
 	public function validate() {
 		$val = parent::validate();
 
+		$qry = Clothing::get();
+
 		$filter = array();
-		$filter['IDCode'] = $this->IDCode();
+		if(strtolower($this->IDCode) != "neu")
+		{
+			$filter['IDCode'] = $this->IDCode;
+			$qry->filter($filter);
 
-		/*if(isset($id = $this->ID)) {
-			$filter['ID'] = $id;
-		}*/
+			if(!empty($this->ID)) {
+				$qry->exclude('ID', $this->ID);
+			}
 
-		$qry = Clothing::get()->filter($filter);
+			if($qry->Count() > 0) {
+				$val->error('Ein Kleidungsstück mit dieser ID existiert bereits!');
+			}
+		}		
 
 		return $val;
 	}
