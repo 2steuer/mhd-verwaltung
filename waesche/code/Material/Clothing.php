@@ -38,6 +38,7 @@ class Clothing extends MaterialDataObject {
 				->setSource(
 						StaffMember::get()
 							->filter('Active', '1')
+							->sort('Name')
 							->map('ID', 'Name')
 					)
 				->setEmptyString('Lager'),
