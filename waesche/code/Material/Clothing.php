@@ -25,6 +25,18 @@ class Clothing extends MaterialDataObject {
 	static $quick_search_field = 'IDCode';
 	static $quick_search_label = 'ID';
 
+	static $searchable_fields = array(
+			'TypeID' => array(
+					'title' => 'Typ',
+					'field' => 'DropDownField',
+					'filter' => 'ExactMatchFilter'
+				),
+			'Size' => array(
+					'title' => 'Größe',
+					'filter' => 'PartialMatchFilter'
+				)
+		);
+
 	public function getFrontendFields($params = null) {
 		$fields = new FieldList(
 			DropDownField::create('TypeID', 'Kleidungstyp')
@@ -63,16 +75,17 @@ class Clothing extends MaterialDataObject {
 	public function validate() {
 		$val = parent::validate();
 
-		$qry = Clothing::get();
-
 		$filter = array();
+		$filter['Active'] = '1';
 		if(strtolower($this->IDCode) != "neu")
 		{
 			$filter['IDCode'] = $this->IDCode;
-			$qry->filter($filter);
 
 			if(!empty($this->ID)) {
-				$qry->exclude('ID', $this->ID);
+				$qry = Clothing::get()->filter($filter)->exclude(array('ID'=> $this->ID));
+			}
+			else {
+				$qry = Clothing::get()->filter($filter);
 			}
 
 			if($qry->Count() > 0) {
@@ -82,4 +95,22 @@ class Clothing extends MaterialDataObject {
 
 		return $val;
 	}
+
+	public function getCustomSearchContext() {
+        $fields = $this->scaffoldSearchFields();
+
+        $fields->dataFieldByName('TypeID')->setSource(
+        		ClothingType::get()->filter('Active', '1')->map('ID', 'Name')
+        	);
+
+        $filters = array(
+            'TypeID' => new ExactMatchFilter('TypeID'),
+            'Size' => new PartialMatchFilter('Size')
+        );
+        return new SearchContext(
+            $this->class,
+            $fields,
+            $filters
+        );
+    }
 }
