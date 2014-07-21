@@ -1,5 +1,5 @@
 <h2>Offene Vorgänge</h2>
-<a href="{$Link}new">Neuen Vorgang erstellen</a>
+<a href="{$Link}newbooking">Neuen Vorgang erstellen</a>
 <% if OpenBookings %>
 <table class="record_list">
 <tr>
@@ -13,19 +13,20 @@
 </tr>
 
 <% loop OpenBookings %>
-<tr>
-<td><img src="mysite/img/{$Direction}.png" alt="$Direction" /></td>
+<tr class="$EvenOdd">
+<td class="icon_col"><img src="mysite/img/{$Direction}.png" alt="$Direction" /></td>
 <td>$Date.Nice</td>
 <td>$CostCenter.Name</td>
 <td>$Member.Surname, $Member.FirstName</td>
-<td><a href="{$Top.Link}edit/$ID"><img src="mysite/img/pencil.png" alt="Bearbeiten" /></a></td>
-<td><a href="{$Top.Link}confirm/$ID"><img src="mysite/img/check.png" alt="Buchen" /></a></td>
-<td><a href="{$Top.Link}delete/$ID"><img src="mysite/img/trash.png" alt="Löschen" /></a></td>
+<td class="icon_col"><a href="{$Top.Link}edit/$ID"><img src="mysite/img/pencil.png" alt="Bearbeiten" /></a></td>
+<td class="icon_col"><a href="{$Top.Link}confirm/$ID"><img src="mysite/img/check.png" alt="Buchen" /></a></td>
+<td class="icon_col"><a href="{$Top.Link}delete/$ID"><img src="mysite/img/trash.png" alt="Löschen" /></a></td>
 </tr>
 <% end_loop %>
 
 </table>
 <% else %>
+<br />
 <br />
 Keine offenen Vorgänge.
 <% end_if %>
@@ -33,7 +34,7 @@ Keine offenen Vorgänge.
 <h2>Gebuchte Vorgänge</h2>
 <% if BookedBookings %>
 <table class="record_list">
-<tr>
+<tr class="$EvenOdd">
 	<th class="icon_col">E/A</th>
 	<th>Datum</th>
 	<th>Kostenstelle</th>
@@ -43,11 +44,11 @@ Keine offenen Vorgänge.
 
 <% loop OpenBookings %>
 <tr>
-<td><img src="mysite/img/{$Direction}.png" alt="$Direction" /></td>
+<td class="icon_col"><img src="mysite/img/{$Direction}.png" alt="$Direction" /></td>
 <td>$Date.Nice</td>
 <td>$CostCenter.Name</td>
 <td>$Member.Surname, $Member.FirstName</td>
-<td><a href="{$Top.Link}unbook/$ID"><img src="mysite/img/unbook.png" alt="Buchung Rückgängig" /></a></td>
+<td class="icon_col"><a href="{$Top.Link}unbook/$ID"><img src="mysite/img/unbook.png" alt="Buchung Rückgängig" /></a></td>
 </tr>
 <% end_loop %>
 
