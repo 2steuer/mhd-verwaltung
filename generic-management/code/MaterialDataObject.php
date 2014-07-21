@@ -33,4 +33,8 @@ class MaterialDataObject extends DataObject {
 	public function quick_search_label() {
 		return $this->stat('quick_search_label');
 	}
+
+	public function validate() {
+		return parent::validate();
+	}
 }

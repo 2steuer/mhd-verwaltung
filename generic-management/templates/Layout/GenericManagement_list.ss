@@ -1,6 +1,10 @@
 <% if QuickSearchEnabled %>
 <div id="quicksearchform">$QuickSearchForm</div>
 <% end_if %>
+
+<% if ShowAdd %>
+<a href="{$Top.Link}add">$SingularName hinzufügen</a>
+<% end_if %>
 <table class="record_list">
 <tr>
 	<th>Name</th>
