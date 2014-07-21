@@ -4,10 +4,17 @@
 <% end_if %>
 <% end_if %>
 
+<% if CustomSearchForm %>
+<div id="search_filter_form">
+<h3>Kleidungsstücke filtern</h3>
+$CustomSearchForm</div>
+<% end_if %>
+
 <% if ActiveRecords %>
 <% if ShowAdd %>
 <a href="{$Top.Link}add">$SingularName hinzufügen</a>&nbsp;
 <% end_if %>
+
 
 <form id="print_label_checkform" method="post" action="{$Link}printlabels" target="_blank">
 <table class="record_list">

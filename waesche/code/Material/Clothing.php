@@ -22,9 +22,9 @@ class Clothing extends MaterialDataObject {
 
 	static $sort_field = 'ClothingType.Name';
 
-	static $quick_search_field = 'IDCode';
+	/*static $quick_search_field = 'IDCode';
 	static $quick_search_label = 'ID';
-
+*/
 	static $searchable_fields = array(
 			'TypeID' => array(
 					'title' => 'Typ',
@@ -34,6 +34,10 @@ class Clothing extends MaterialDataObject {
 			'Size' => array(
 					'title' => 'Größe',
 					'filter' => 'PartialMatchFilter'
+				),
+			'IDCode' => array(
+				'title' => 'ID',
+				'filter' => 'PartialMatchFilter'
 				)
 		);
 
@@ -45,7 +49,8 @@ class Clothing extends MaterialDataObject {
 					->map('ID', 'Name')
 					),
 			TextField::create('Size', 'Größe'),
-			TextField::create('IDCode', 'ID-Nummer'),
+			TextField::create('IDCode', 'ID-Nummer')
+				->setDescription('Als ID bitte "NEU", falls nicht vorhanden.'),
 			DropDownField::create('OwnerID', 'Helfer')
 				->setSource(
 						StaffMember::get()
@@ -100,12 +105,13 @@ class Clothing extends MaterialDataObject {
         $fields = $this->scaffoldSearchFields();
 
         $fields->dataFieldByName('TypeID')->setSource(
-        		ClothingType::get()->filter('Active', '1')->map('ID', 'Name')
-        	);
+        		ClothingType::get()->filter('Active', '1')->sort('Name')->map('ID', 'Name')
+        	)->setEmptyString('Alle');
 
         $filters = array(
             'TypeID' => new ExactMatchFilter('TypeID'),
-            'Size' => new PartialMatchFilter('Size')
+            'Size' => new PartialMatchFilter('Size'),
+            'IDCode' => new PartialMatchFilter('IDCode')
         );
         return new SearchContext(
             $this->class,

@@ -42,7 +42,8 @@ class GenericManagementPage_Controller extends Page_Controller {
 		'print',
 		'RecordForm',
 		'DeleteForm',
-		'QuickSearchForm'
+		'QuickSearchForm',
+		'CustomSearchForm'
 	);
 
 	public function init() {
@@ -82,6 +83,13 @@ class GenericManagementPage_Controller extends Page_Controller {
 	*/
 
 	public function index($request) {
+		if($request->getVar('filter') == '1') {
+			$context = singleton($this->ModelName)->getCustomSearchContext();
+			$results = $context->getResults($request->getVars())->filter('Active', '1');
+
+			return $this->customise(array('ActiveRecords' => $results))->renderWith(array($this->ModelName.'_list', 'GenericManagement_list', 'Page'));
+		}
+
 		return $this->renderWith(array($this->ModelName.'_list', 'GenericManagement_list', 'Page'));
 	}
 
@@ -278,6 +286,7 @@ class GenericManagementPage_Controller extends Page_Controller {
 	}
 
 	public function doQuickSearch($data, $form) {
+
 		$value = $data['SearchValue'];
 
 		$result = DataObject::get($this->ModelName)
@@ -292,6 +301,32 @@ class GenericManagementPage_Controller extends Page_Controller {
 			return $this->redirectBack();
 		}
 	}
+
+	/*
+	** Searching
+	*/
+
+	public function CustomSearchForm() {
+		if(singleton($this->ModelName)->hasMethod('getCustomSearchContext')) {
+			$context = singleton($this->ModelName)->getCustomSearchContext();
+			$fields = $context->getSearchFields();
+
+			$actions = new FieldList(FormAction::create('doSearch', 'Suchen'));
+
+			$form = new Form($this, 'CustomSearchForm', $fields, $actions);
+			$form->disableSecurityToken();
+			return $form;
+		}
+	}
+
+	public function doSearch($data, $form) {
+		$data['filter'] = 1;
+		$s_data = $form->getData();
+		$s_data['filter'] = 1;
+
+		return $this->redirect($this->Link().'index?'.http_build_query($s_data));
+	}
+
 	/*
 	 * Helper Functions
 	*/

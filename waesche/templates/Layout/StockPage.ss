@@ -1,5 +1,9 @@
 <% if StockClothing %>
 
+<div id="search_filter_form">
+<h3>Kleidungsstücke filtern</h3>
+$CustomSearchForm</div>
+
 <table class="list_table">
 
 <tr>
