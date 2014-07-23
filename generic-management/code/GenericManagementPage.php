@@ -155,8 +155,9 @@ class GenericManagementPage_Controller extends Page_Controller {
 		$val = $record->validate();
 
 		if(!$val->valid()) {
-			Session::set('form_error', $val->message());
+			Session::set('form_error', $val->starredList());
 			Session::set('form_data', $data);
+
 			return $this->redirect($this->Link().'edit/'.$record->ID);
 		}
 
@@ -250,9 +251,11 @@ class GenericManagementPage_Controller extends Page_Controller {
 			$form->loadDataFrom($record);
 		}
 
-		if(Session::get('form_data'))
+        $dat = Session::get('form_data');
+
+		if($dat)
 		{
-			$form->loadDataFrom(Session::get('form_data'));
+			$form->loadDataFrom($dat);
 			Session::clear('form_data');
 		}
 		

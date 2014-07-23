@@ -2,6 +2,7 @@
 
 Director::set_environment_type('dev');
 error_reporting(E_ALL);
+SS_Log::add_writer(new SS_LogFileWriter('sserrors.txt'), SS_Log::NOTICE, '<=');
 
 global $project;
 $project = 'mysite';

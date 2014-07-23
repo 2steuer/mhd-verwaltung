@@ -14,9 +14,11 @@ class BookingPage_Controller extends Page_Controller {
 			'delete',
             'addentry',
             'deleteentry',
+            'updateCounts',
 			'BookingForm',
-            'EntryForm',
+            'NewEntryForm',
             'DeleteForm'
+
 		);
 
 	/*
@@ -74,7 +76,8 @@ class BookingPage_Controller extends Page_Controller {
         $form = $this->DeleteForm();
 
         return $this->renderWith(array('BookingPage_form', 'BookingPage', 'Page'), array(
-            'Form' => $form
+            'Form' => $form,
+            'Title' => 'Vorgang löschen'
         ));
     }
 
@@ -88,6 +91,70 @@ class BookingPage_Controller extends Page_Controller {
         Session::clear('booking_id');
 
         return $this->redirect('index');
+    }
+    /*
+     * Adding Entry to Bookings
+     */
+    public function addentry($request) {
+        $booking = $request->param('ID');
+        Session::set('booking_id', $booking);
+
+        return $this->renderWith(array('BookingPage_form', 'BookingPage', 'Page'),
+            array('Form' => $this->NewEntryForm(),
+            'Title' => 'Artikel hinzufügen'));
+    }
+
+    public function doAddEntry($data, $form) {
+        $booking = Booking::get()->byID(Session::get('booking_id'));
+
+        if($entry = $booking->Entries()->find('ResourceID', $data['ResourceID'])) {
+            $entry->Count += $data['Count'];
+            $entry->write();
+        }
+        else {
+            $entry = new BookingEntry();
+            $form->saveInto($entry);
+            $entry->write();
+        }
+        return $this->redirect($this->Link().'edit/'.Session::get('booking_id'));
+    }
+    /*
+     * Deleting Entries
+     */
+
+    public function deleteentry($request) {
+        $entryID = $request->param('ID');
+
+        $entry = BookingEntry::get()->byID($entryID);
+
+        $bookingID = $entry->BookingID;
+        $entry->Active = '0';
+        $entry->write();
+
+        Session::set('resource_message', $entry->Resource()->Name.' entfernt.');
+
+        return $this->redirect($this->Link().'edit/'.$bookingID);
+    }
+
+    /*
+     * Updating Counts
+     */
+    public function updateCounts($request) {
+        $counts = $request->postVar('counts');
+        $booking = $request->param('ID');
+
+        foreach($counts as $id=>$count) {
+            $entry = BookingEntry::get()->byID($id);
+            if($entry->BookingID != $booking) {
+                return $this->httpError(500, 'Fehler, Angriff erkannt!');
+            }
+            $entry->Count = $count;
+            $entry->write();
+        }
+
+        Session::set('resource_message', 'Artikelmengen gespeichert.');
+
+        return $this->redirect($this->Link().'edit/'.$booking);
     }
 
 	/*
@@ -146,6 +213,28 @@ class BookingPage_Controller extends Page_Controller {
         return new Form($this, 'DeleteForm', $fields, $actions, $required);
     }
 
+    public function NewEntryForm() {
+        $fields = new FieldList(
+            HiddenField::create('BookingID')
+                ->setValue(Session::get('booking_id')),
+            DropDownField::create('ResourceID', 'Artikel')
+                ->setSource(Resource::get()
+                    ->filter('Active', '1')
+                    ->sort('Name')
+                    ->map('ID', 'Name')),
+            NumericField::create('Count', 'Anzahl')
+        );
+
+        $booking_id = Session::get('booking_id');
+
+        $actions = new FieldList(
+            CancelFormAction::create($this->Link().'edit/'.$booking_id, 'Abbrechen'),
+            FormAction::create('doAddEntry', 'Hinzufügen')
+        );
+
+        return new Form($this, 'NewEntryForm', $fields, $actions);
+    }
+
 
 	/*
 	 * Template Functions
@@ -159,4 +248,11 @@ class BookingPage_Controller extends Page_Controller {
 		return Booking::get()->filter(array('Active' => '1', 
 			'Booked' => '0'));
 	}
+
+    public function ResourceMessage() {
+        $msg = Session::get('resource_message');
+        Session::clear('resource_message');
+
+        return $msg;
+    }
 }

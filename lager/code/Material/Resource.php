@@ -48,6 +48,25 @@ class Resource extends MaterialDataObject {
 		return $fields;
 	}
 
+    public function validate() {
+        $result = new ValidationResult();
+
+        if(!empty($this->ID)) {
+            $qry = Resource::get()->filter(array('Active'=> '1', 'Barcode'=>$this->Barcode))->exclude(array('ID' => $this->ID));
+            if($qry->Count() > 0) {
+                $result->error('Barcode ist bereits in Benutzung!');
+            }
+        }
+        else {
+            $qry = Resource::get()->filter(array('Active'=> '1', 'Barcode'=> $this->Barcode));
+            if($qry->Count() > 0) {
+                $result->error('Barcode ist bereits in Benutzung!');
+            }
+        }
+
+        return $result;
+    }
+
 	public function WarningLevel() {
 		if($this->Quantity > $this->MinimumQuantity && $this->Quantity > $this->WarningQuantity) {
 			return 0;
