@@ -1,3 +1,5 @@
 assets
 /*.sublime-workspace
 /project.sublime-project
+/framework/sserrors.txt
+/.idea
