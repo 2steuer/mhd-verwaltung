@@ -6,6 +6,7 @@ class Place extends MaterialDataObject {
 			'Description' => 'Text'
 		);
 
+    static $has_many = array('Devices' => 'ElectronicalDevice');
 
 	static $field_labels = array('Description' => 'Bemerkungen');
 

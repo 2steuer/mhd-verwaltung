@@ -399,3 +399,47 @@ span.error {
 span.notice {
   font-style: italic;
 }
+
+/*
+ * printing device list
+*/
+
+body.printlist {
+  .printlist_description {
+    margin-left: 20px;
+  }
+
+  table.printlist_table {
+    margin-top: 20px;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+
+    width: 100%;
+
+    tr {
+      border-top: 1px solid;
+    }
+
+    td, th {
+      border-right: 1px solid;
+    }
+
+    td.id_td {
+      width: 10%;
+      text-align: center;
+    }
+
+    td.name_td {
+      width: 20%;
+    }
+
+    td.desc_td {
+      width: 40%;
+    }
+
+    td.check_td {
+      width: 10%;
+    }
+
+  }
+}

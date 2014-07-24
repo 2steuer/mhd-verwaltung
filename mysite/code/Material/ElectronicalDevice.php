@@ -28,4 +28,12 @@ class ElectronicalDevice extends MaterialDataObject {
 
 		return $fields;
 	}
+
+    public function onBeforeWrite() {
+        parent::onBeforeDelete();
+
+        if($this->Active == '0') {
+            $this->PlaceID = '';
+        }
+    }
 }

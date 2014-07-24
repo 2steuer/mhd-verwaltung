@@ -33,5 +33,9 @@ class Device extends MaterialDataObject {
 
 	public function onBeforeWrite() {
 		parent::onBeforeWrite();
+
+		if($this->Active == '0') {
+			$this->CategoryID = '';
+		}
 	}
 }
