@@ -4,7 +4,8 @@ class ElectronicalDevice extends MaterialDataObject {
 	static $db = array(
 			'Name' => 'Varchar',
 			'Description' => 'Text',
-			'Barcode' => 'Varchar'
+			'Barcode' => 'Varchar',
+            'ExternalPowerSupply' => 'Boolean'
 		);
 
 
@@ -23,8 +24,9 @@ class ElectronicalDevice extends MaterialDataObject {
 
 		$fields->removeByName('Active');
 		$fields->replaceField('PlaceID', DropDownField::create('PlaceID', 'Standort')
-				->setSource(Place::get()->filter('Active', '1')->map('ID', 'Name'))
+				->setSource(Place::get()->filter('Active', '1')->sort('Name')->map('ID', 'Name'))
 			);
+        $fields->push(CheckboxField::create('ExternalPowerSupply', 'Externes Netzteil'));
 
 		return $fields;
 	}
@@ -35,5 +37,9 @@ class ElectronicalDevice extends MaterialDataObject {
         if($this->Active == '0') {
             $this->PlaceID = '';
         }
+    }
+
+    public function validate() {
+        return parent::validate();
     }
 }

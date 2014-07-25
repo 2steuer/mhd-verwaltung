@@ -19,6 +19,7 @@
 <body class="printlist">
 <h1>Geräteliste MHD</h1>
 <% loop Places %>
+    <% if $Devices %>
 <h2>Ort: $Name</h2>
 <div class="printlist_description">$Description</div>
     <table class="printlist_table">
@@ -40,6 +41,7 @@
             </tr>
         <% end_loop %>
     </table>
+    <% end_if %>
 <% end_loop %>
 </body>
 </html>
