@@ -34,21 +34,23 @@ Keine offenen Vorgänge.
 <h2>Gebuchte Vorgänge</h2>
 <% if BookedBookings %>
 <table class="record_list">
-<tr class="$EvenOdd">
+<tr>
 	<th class="icon_col">E/A</th>
 	<th>Datum</th>
 	<th>Kostenstelle</th>
 	<th>Benutzer</th>
+    <th>Anzeigen</th>
 	<th class="icon_col">Rückbuchen</th>
 </tr>
 
 <% loop OpenBookings %>
-<tr>
-<td class="icon_col"><img src="mysite/img/{$Direction}.png" alt="$Direction" /></td>
-<td>$Date.Nice</td>
-<td>$CostCenter.Name</td>
-<td>$Member.Surname, $Member.FirstName</td>
-<td class="icon_col"><a href="{$Top.Link}unbook/$ID"><img src="mysite/img/unbook.png" alt="Buchung Rückgängig" /></a></td>
+<tr class="$EvenOdd">
+    <td class="icon_col"><img src="mysite/img/{$Direction}.png" alt="$Direction" /></td>
+    <td>$Date.Nice</td>
+    <td>$CostCenter.Name</td>
+    <td>$Member.Surname, $Member.FirstName</td>
+    <td class="icon_col"><a href="{$$top.Link}view/$ID"><img src="mysite/img/clipboard.png" alt="Anzeigen" /></a></td>
+    <td class="icon_col"><a href="{$Top.Link}unbook/$ID"><img src="mysite/img/unbook.png" alt="Buchung Rückgängig" /></a></td>
 </tr>
 <% end_loop %>
 

@@ -47,6 +47,8 @@ class Page_Controller extends ContentController {
 
 	public function init() {
 		parent::init();
+
+        Requirements::javascript('lager/js/barcode_scan.js');
 	}
 
 	public function NoteForm() {

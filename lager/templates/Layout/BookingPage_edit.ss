@@ -9,6 +9,10 @@ $Form
     <span class="notice">$Top.ResourceMessage</span>
 <% end_if %>
 
+<div id="quick_add_form">
+<h3>Barcode scannen</h3>
+    $Top.QuickEntryForm</div>
+
 
 <form method="post" action="{$Top.Link}updateCounts/$ID">
 <table class="resource_list">

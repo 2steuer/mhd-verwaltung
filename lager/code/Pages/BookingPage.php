@@ -12,11 +12,13 @@ class BookingPage_Controller extends Page_Controller {
 			'edit',
 			'confirm',
 			'delete',
+            'view',
             'addentry',
             'deleteentry',
             'updateCounts',
 			'BookingForm',
             'NewEntryForm',
+            'QuickEntryForm',
             'DeleteForm'
 
 		);
@@ -157,10 +159,44 @@ class BookingPage_Controller extends Page_Controller {
         return $this->redirect($this->Link().'edit/'.$booking);
     }
 
+    /*
+     * Quick Add Entry
+     */
+    public function quickAdd($data, $form) {
+        $booking = Booking::get()->byID($data['BookingID']);
+
+        $resource = Resource::get()->filter(array('Active' => '1', 'Barcode' => $data['Barcode']))->First();
+
+        if($resource) {
+            if($entry = $booking->Entries()->find('ResourceID', $resource->ID)) {
+                $entry->Count++;
+                $entry->write();
+            }
+            else {
+                $entry = new BookingEntry();
+                $entry->ResourceID = $resource->ID;
+                $entry->Count = 1;
+
+                $booking->Entries()->add($entry);
+
+                $entry->write();
+            }
+
+            $booking->write();
+
+            Session::set('resource_message', 'Artikel hinzugefügt.');
+            return $this->redirect($this->Link().'edit/'.$booking->ID);
+        }
+        else {
+            Session::set('resource_message', 'Artikel nicht gefunden!');
+            return $this->redirect($this->Link().'edit/'.$booking->ID);
+        }
+    }
+
 	/*
 	 * Forms
 	*/
-	protected function BookingForm() {
+	public function BookingForm() {
 		$fields = new FieldList(
 			DropDownField::create('Direction', 'Buchungsrichtung')
 				->setSource(array('in' => 'Wareneingang', 'out' => 'Warenausgang'))
@@ -233,6 +269,20 @@ class BookingPage_Controller extends Page_Controller {
         );
 
         return new Form($this, 'NewEntryForm', $fields, $actions);
+    }
+
+    public function QuickEntryForm() {
+        $fields = new FieldList(
+            TextField::create('Barcode', 'Barcode'),
+            HiddenField::create('BookingID')
+                ->setValue(Session::get('booking_id'))
+        );
+
+        $actions = new FieldList(
+            FormAction::create('quickAdd', 'Hinzufügen')
+        );
+
+        return new Form($this, 'QuickEntryForm', $fields, $actions);
     }
 
 

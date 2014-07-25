@@ -23,9 +23,8 @@ class Resource extends MaterialDataObject {
 			'Quantity' => 'Bestand',
 			'WarningQuantity' => 'Bestand Warnung',
 			'MinimumQuantity' => 'Minimalbestand',
-			'Category' => 'Kategorie',
-			'Picture' => 'Bild'
-		);
+			'Category' => 'Kategorie'
+    );
 
 	public function getFrontendFields($params = null) {
 
@@ -37,11 +36,7 @@ class Resource extends MaterialDataObject {
 			TextField::create('Barcode', 'Barcode'),
 			NumericField::create('Quantity', 'Bestand'),
 			NumericField::create('WarningQuantity', 'Bestand Warnung'),
-			NumericField::create('MinimumQuantity', 'Mindestbestand'),
-			MultiUploadField::create('Picture', 'Bild')
-				->setFolderName('Uploads/img_resource')
-				->setAllowedMaxFileNumber(1)
-				->setAllowedMaxUpload('1GB')
+			NumericField::create('MinimumQuantity', 'Mindestbestand')
 
 		);
 
