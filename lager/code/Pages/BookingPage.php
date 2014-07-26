@@ -143,6 +143,16 @@ class BookingPage_Controller extends Page_Controller {
     }
 
     /*
+     * Viewing
+     */
+
+    public function view($request) {
+        $booking = Booking::get()->byID($request->param('ID'));
+
+        return $this->customise(array('Booking' => $booking, 'Title' => 'Vorgang vom '.$booking->dbObject('Date')->Nice()));
+    }
+
+    /*
      * Updating Counts
      */
     public function updateCounts($request) {
@@ -392,12 +402,12 @@ class BookingPage_Controller extends Page_Controller {
 	*/
 	public function BookedBookings() {
 		return Booking::get()->filter(array('Active' => '1', 
-			'Booked' => '1'));
+			'Booked' => '1'))->sort(array('Date'=>'DESC'));
 	}
 
 	public function OpenBookings() {
 		return Booking::get()->filter(array('Active' => '1', 
-			'Booked' => '0'));
+			'Booked' => '0'))->sort(array('Date' => 'ASC'));
 	}
 
     public function ResourceMessage() {

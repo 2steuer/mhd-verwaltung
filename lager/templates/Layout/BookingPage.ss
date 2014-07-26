@@ -49,7 +49,7 @@ Keine offenen Vorgänge.
     <td>$Date.Nice</td>
     <td>$CostCenter.Name</td>
     <td>$Member.Surname, $Member.FirstName</td>
-    <td class="icon_col"><a href="{$$top.Link}view/$ID"><img src="mysite/img/clipboard.png" alt="Anzeigen" /></a></td>
+    <td class="icon_col"><a href="{$Top.Link}view/$ID"><img src="mysite/img/clipboard.png" alt="Anzeigen" /></a></td>
     <td class="icon_col"><a href="{$Top.Link}confirmunbooking/$ID"><img src="mysite/img/unbook.png" alt="Buchung Rückgängig" /></a></td>
 </tr>
 <% end_loop %>
