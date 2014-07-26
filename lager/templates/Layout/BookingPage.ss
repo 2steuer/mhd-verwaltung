@@ -19,7 +19,7 @@
 <td>$CostCenter.Name</td>
 <td>$Member.Surname, $Member.FirstName</td>
 <td class="icon_col"><a href="{$Top.Link}edit/$ID"><img src="mysite/img/pencil.png" alt="Bearbeiten" /></a></td>
-<td class="icon_col"><a href="{$Top.Link}confirm/$ID"><img src="mysite/img/check.png" alt="Buchen" /></a></td>
+<td class="icon_col"><a href="{$Top.Link}confirmbooking/$ID/i"><img src="mysite/img/check.png" alt="Buchen" /></a></td>
 <td class="icon_col"><a href="{$Top.Link}delete/$ID"><img src="mysite/img/trash.png" alt="Löschen" /></a></td>
 </tr>
 <% end_loop %>
@@ -43,14 +43,14 @@ Keine offenen Vorgänge.
 	<th class="icon_col">Rückbuchen</th>
 </tr>
 
-<% loop OpenBookings %>
+<% loop BookedBookings %>
 <tr class="$EvenOdd">
     <td class="icon_col"><img src="mysite/img/{$Direction}.png" alt="$Direction" /></td>
     <td>$Date.Nice</td>
     <td>$CostCenter.Name</td>
     <td>$Member.Surname, $Member.FirstName</td>
     <td class="icon_col"><a href="{$$top.Link}view/$ID"><img src="mysite/img/clipboard.png" alt="Anzeigen" /></a></td>
-    <td class="icon_col"><a href="{$Top.Link}unbook/$ID"><img src="mysite/img/unbook.png" alt="Buchung Rückgängig" /></a></td>
+    <td class="icon_col"><a href="{$Top.Link}confirmunbooking/$ID"><img src="mysite/img/unbook.png" alt="Buchung Rückgängig" /></a></td>
 </tr>
 <% end_loop %>
 

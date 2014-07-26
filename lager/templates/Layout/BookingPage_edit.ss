@@ -36,3 +36,5 @@ $Form
 </table>
 </form>
 <% end_with %>
+<h3>Vorgang buchen</h3>
+<a href="{$Link}confirmbooking/$Booking.ID/e">Vorgang jetzt buchen</a>

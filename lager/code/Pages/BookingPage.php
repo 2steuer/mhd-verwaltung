@@ -16,10 +16,14 @@ class BookingPage_Controller extends Page_Controller {
             'addentry',
             'deleteentry',
             'updateCounts',
+            'confirmbooking',
+            'confirmunbooking',
 			'BookingForm',
             'NewEntryForm',
             'QuickEntryForm',
-            'DeleteForm'
+            'DeleteForm',
+            'BookForm',
+            'UnBookForm'
 
 		);
 
@@ -193,9 +197,106 @@ class BookingPage_Controller extends Page_Controller {
         }
     }
 
-	/*
-	 * Forms
-	*/
+    /*
+     * Booking
+     */
+    public function confirmbooking($request) {
+        Session::set('booking_id', $request->param('ID'));
+        Session::set('cancel_link', $request->param('OtherID'));
+        return $this->renderWith(array('BookingPage_form', 'BookingPage', 'Page'), array('Form' => $this->BookForm()));
+    }
+
+    public function doBook($data, $form) {
+        $booking = Booking::get()->byID($data['BookingID']);
+
+        foreach($booking->Entries() as $entry) {
+            $resource = Resource::get()->byID($entry->ResourceID);
+
+            switch($booking->Direction) {
+                case 'in':
+                    $resource->Quantity += $entry->Count;
+                    break;
+                case 'out':
+                    $resource->Quantity -= $entry->Count;
+                    break;
+            }
+
+            $resource->write();
+        }
+
+        $booking->Booked = '1';
+
+        $booking->write();
+
+        return $this->redirect('index');
+    }
+
+    public function BookForm() {
+        $fields = new FieldList(
+            HiddenField::create('BookingID')->setValue(Session::get('booking_id')),
+            CheckboxField::create('ConfirmBox', 'Ja, den Vorgang buchen und Artikelbestand aktualisieren.')
+        );
+
+        $actions = new FieldList(CancelFormAction::create($this->Link().((Session::get('cancel_link') == 'e') ? 'edit/'.Session::get('booking_id') : 'index'), 'Abbrechen'),
+        FormAction::create('doBook', 'Buchen'));
+
+        $required = new RequiredFields(array('ConfirmBox'));
+
+        return new Form($this, 'BookForm', $fields, $actions, $required);
+    }
+
+    /*
+     * Unbooking
+     */
+    public function confirmunbooking($request) {
+        Session::set('booking_id', $request->param('ID'));
+        Session::set('cancel_link', $request->param('OtherID'));
+        return $this->renderWith(array('BookingPage_form', 'BookingPage', 'Page'), array('Form' => $this->UnBookForm()));
+    }
+
+    public function doUnBook($data, $form) {
+        $booking = Booking::get()->byID($data['BookingID']);
+
+        foreach($booking->Entries() as $entry) {
+            $resource = Resource::get()->byID($entry->ResourceID);
+
+            switch($booking->Direction) {
+                case 'in':
+                    $resource->Quantity -= $entry->Count;
+                    break;
+                case 'out':
+                    $resource->Quantity += $entry->Count;
+                    break;
+            }
+
+            $resource->write();
+        }
+
+        $booking->Booked = '0';
+
+        $booking->write();
+
+        return $this->redirect($this->Link().'edit/'.$booking->ID);
+    }
+
+    public function UnBookForm() {
+        $fields = new FieldList(
+            HiddenField::create('BookingID')->setValue(Session::get('booking_id')),
+            CheckboxField::create('ConfirmBox', 'Ja, den Vorgang rückbuchen und Artikelbestand aktualisieren.')
+        );
+
+        $actions = new FieldList(CancelFormAction::create($this->Link().((Session::get('cancel_link') == 'v') ? 'view/'.Session::get('booking_id') : 'index'), 'Abbrechen'),
+            FormAction::create('doUnBook', 'Buchen'));
+
+        $required = new RequiredFields(array('ConfirmBox'));
+
+        return new Form($this, 'UnBookForm', $fields, $actions, $required);
+    }
+
+
+    /*
+     * Forms
+    */
 	public function BookingForm() {
 		$fields = new FieldList(
 			DropDownField::create('Direction', 'Buchungsrichtung')
