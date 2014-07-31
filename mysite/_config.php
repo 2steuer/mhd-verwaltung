@@ -20,3 +20,4 @@ $databaseConfig = array(
 // Set the site locale
 i18n::set_locale('de_DE');
 LocalDateHelper::setLocale('de_DE');
+date_default_timezone_set('Europe/Berlin');

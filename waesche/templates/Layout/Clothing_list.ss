@@ -18,7 +18,8 @@ $CustomSearchForm</div>
 
 <form id="print_label_checkform" method="post" action="{$Link}printlabels" target="_blank">
 <table class="record_list">
-<tr>
+<thead>
+    <tr>
 	<th>Typ</th>
 	<th>Größe</th>
 	<th>Standort</th>
@@ -38,6 +39,7 @@ $CustomSearchForm</div>
 
 	<th>Label</th>
 </tr>
+</thead>
 
 <% loop ActiveRecords %>
 <tr class="$EvenOdd">

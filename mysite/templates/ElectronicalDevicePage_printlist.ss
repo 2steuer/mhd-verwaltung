@@ -23,6 +23,7 @@
 <h2>Ort: $Name</h2>
 <div class="printlist_description">$Description</div>
     <table class="printlist_table">
+        <thead>
         <tr>
             <th>ID</th>
             <th>Bezeichnung</th>
@@ -30,6 +31,7 @@
             <th>Barcode</th>
             <th>Check</th>
         </tr>
+        </thead>
 
         <% loop Devices %>
             <tr>

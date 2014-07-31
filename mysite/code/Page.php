@@ -48,6 +48,14 @@ class Page_Controller extends ContentController {
 	public function init() {
 		parent::init();
 
+        Requirements::css('mysite/css/normalize.min.css');
+        Requirements::css('mysite/css/format.css');
+
+        Requirements::block(THIRDPARTY_DIR . '/jquery/jquery.js');
+
+        Requirements::javascript('mysite/js/jquery-1.11.0.min.js');
+        Requirements::javascript('mysite/js/modernizr-2.6.2.min.js');
+
         Requirements::javascript('lager/js/barcode_scan.js');
 	}
 

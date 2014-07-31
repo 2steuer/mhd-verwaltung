@@ -1,6 +1,7 @@
 <a href="{$Top.Link}add">$SingularName hinzufügen</a>&nbsp;<a href="{$Top.Link}printlist" target="_blank">Liste drucken</a>
 <table class="record_list">
-<tr>
+<thead>
+    <tr>
 	<th>Name</th>
 	<th>Standort</th>
 
@@ -16,6 +17,7 @@
 	<th>Löschen</th>
 	<% end_if %>
 </tr>
+</thead>
 
 <% loop ActiveRecords %>
 <tr class="$EvenOdd">

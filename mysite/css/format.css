@@ -1,0 +1,355 @@
+#wrapper {
+  width: 1000px;
+  min-height: 600px;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  clear: both;
+}
+#wrapper header {
+  width: 1000px;
+  height: 150px;
+}
+#wrapper header h1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 80px;
+  font-size: 26px;
+}
+#wrapper #block {
+  width: 1000px;
+  min-height: 450px;
+  clear: both;
+}
+#wrapper #block nav {
+  width: 185px;
+  min-height: 450px;
+  float: left;
+  padding-right: 15px;
+}
+#wrapper #block nav ul {
+  list-style-type: none;
+  margin-top: 20px;
+  padding: 0;
+}
+#wrapper #block nav ul li {
+  margin: 0px;
+  margin-top: 4px;
+}
+#wrapper #block nav ul li a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  padding-left: 20px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background-color: #766d66;
+}
+#wrapper #block nav ul li a:hover,
+#wrapper #block nav ul li a.section,
+#wrapper #block nav ul li a.active {
+  background-color: #f73429;
+}
+#wrapper #block nav ul#sub_nav {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+#wrapper #block #content {
+  width: 800px;
+  min-height: 450px;
+  padding-bottom: 14px;
+  float: right;
+}
+#wrapper #block #content h2 {
+  border-top: 1px solid black;
+  padding-top: 20px;
+}
+#wrapper footer {
+  background-color: #f73429;
+  width: 1000px;
+  height: 14px;
+  clear: both;
+}
+tr.odd {
+  background-color: lightgrey;
+}
+table.deviceTable {
+  width: 100%;
+}
+table.deviceTable tr.odd {
+  background-color: lightgrey;
+}
+table.deviceTable .col2 {
+  width: 20%;
+  text-align: left;
+}
+table.deviceTable .col3 {
+  width: 10%;
+  text-align: center;
+}
+table.dev_details {
+  width: 500px;
+}
+table.dev_details tr {
+  margin-top: 2px;
+}
+table.dev_details td {
+  margin-right: 5px;
+  vertical-align: top;
+}
+table.dev_details td.col1 {
+  width: 150px;
+}
+table.checks_details {
+  width: 750px;
+}
+table.checks_details .col1 {
+  width: 15%;
+}
+table.checks_details .col3 {
+  width: 10%;
+  text-align: center;
+}
+table.checks_details .col4 {
+  width: 20%;
+}
+table.checks_details .col5 {
+  width: 32px;
+  text-align: center;
+}
+table#type_table {
+  width: 600px;
+}
+table#type_table .col1 {
+  width: 20%;
+}
+table#type_table .col3,
+table#type_table .col4 {
+  width: 10%;
+  text-align: center;
+}
+.check-date-ok,
+.qty-ok {
+  background-color: #00FF00;
+}
+.check-date-warning,
+.qty-warning {
+  background-color: yellow;
+}
+.check-date-alert,
+.qty-alert {
+  background-color: red;
+}
+table#supplier_table,
+.list_table {
+  width: 600px;
+}
+table#supplier_table .col3,
+.list_table .col3 {
+  width: 15%;
+  text-align: center;
+}
+table#supplier_table .col4,
+.list_table .col4 {
+  width: 15%;
+  text-align: center;
+}
+table#checks_table {
+  width: 100%;
+}
+table#checks_table .col1 {
+  width: 10%;
+}
+table#checks_table .col3 {
+  width: 35%;
+}
+table#checks_table .col4 {
+  width: 6%;
+  text-align: center;
+}
+table.record_list {
+  width: 100%;
+  margin-top: 15px;
+}
+table.resource_list {
+  width: 450px;
+  margin-top: 15px;
+}
+table.resource_list .count_col {
+  width: 80px;
+  text-align: center;
+}
+table.resource_list .count_col input {
+  width: 80px;
+}
+td.icon_col {
+  width: 10%;
+  text-align: center;
+}
+div.savedMessage {
+  font-style: italic;
+}
+/*
+** Form font-style
+*/
+form fieldset {
+  border: none;
+}
+form .field {
+  clear: both;
+  margin-top: 3px;
+}
+form .field .left {
+  float: left;
+  width: 200px;
+}
+form .field input[type="text"],
+form .field select,
+form .field textarea {
+  width: 400px;
+}
+form ul.optionset {
+  list-style-type: none;
+  display: block;
+  float: left;
+  margin-top: 0;
+  margin-left: 0;
+}
+form ul.optionset li {
+  width: 350px;
+}
+form span.description {
+  color: grey;
+}
+#search_filter_form {
+  margin-bottom: 30px;
+}
+#search_filter_form .field .left {
+  width: 120px;
+}
+#search_filter_form .field input[type="text"],
+#search_filter_form .field select,
+#search_filter_form .field textarea {
+  width: 200px;
+}
+#barcodeform,
+#quicksearchform {
+  width: 270px;
+  float: right;
+}
+#barcodeform form,
+#quicksearchform form {
+  clear: both;
+}
+#barcodeform fieldset,
+#quicksearchform fieldset {
+  width: 180px;
+  float: left;
+  padding-right: 3px;
+}
+#barcodeform fieldset label,
+#quicksearchform fieldset label {
+  float: left;
+  width: 75px;
+}
+#barcodeform fieldset input[type=text],
+#quicksearchform fieldset input[type=text] {
+  width: 90px;
+}
+#barcodeform .Actions,
+#quicksearchform .Actions {
+  margin-top: 0.4em;
+  float: right;
+}
+.clothing_label {
+  width: 5.6cm;
+  height: 1.6cm;
+  border: 1px dashed;
+  float: left;
+  padding: 1mm;
+  margin: 0;
+}
+.clothing_label .label_type {
+  font-weight: bold;
+  font-size: 1em;
+}
+#print_actions {
+  float: right;
+  clear: both;
+}
+form#print_label_checkform {
+  clear: both;
+}
+#notes_container {
+  width: 100%;
+  border-top: 1px solid;
+  margin-top: 30px;
+  padding-top: 0.5em;
+}
+#notes_container fieldset {
+  padding: 0;
+  padding-right: 20px;
+}
+#notes_container fieldset label {
+  float: none;
+  margin-bottom: 1px;
+}
+#notes_container fieldset textarea {
+  width: 100%;
+}
+span.error {
+  color: red;
+}
+span.notice {
+  font-style: italic;
+}
+/*
+ * printing device list
+*/
+body.printlist .printlist_description {
+  margin-left: 20px;
+}
+body.printlist table.printlist_table {
+  margin-top: 20px;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  width: 100%;
+}
+body.printlist table.printlist_table tr {
+  border-top: 1px solid;
+}
+body.printlist table.printlist_table td,
+body.printlist table.printlist_table th {
+  border-right: 1px solid;
+}
+body.printlist table.printlist_table td.id_td {
+  width: 10%;
+  text-align: center;
+}
+body.printlist table.printlist_table td.name_td {
+  width: 20%;
+}
+body.printlist table.printlist_table td.desc_td {
+  width: 40%;
+}
+body.printlist table.printlist_table td.check_td {
+  width: 10%;
+}
+div#quick_add_form {
+  clear: left;
+  margin-bottom: 25px;
+}
+div#quick_add_form form fieldset {
+  width: 200px;
+  float: left;
+  margin-right: 0px;
+  margin-top: 0px;
+  padding: 0;
+}
+div#quick_add_form form fieldset label {
+  width: 80px;
+}
+div#quick_add_form form fieldset input {
+  width: 100px;
+}

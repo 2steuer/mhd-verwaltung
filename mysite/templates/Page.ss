@@ -7,12 +7,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
         <title>$Title &laquo; {$SiteConfig.SiteTitle}</title>
-        <link rel="stylesheet" type="text/css" href="mysite/css/normalize.min.css" />
-        <link rel="stylesheet/less" type="text/css" href="mysite/css/format.less" />
-
-        <script type="text/javascript" src="mysite/js/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="mysite/js/modernizr-2.6.2.min.js"></script>  
-        <script type="text/javascript" src="mysite/js/less-1.3.3.min.js"></script>
 	</head>
 <body>
 	
