@@ -45,4 +45,4 @@ Dieser Helfer hat keine Kleidung. <br />
 
 <% end_with %>
 <br />
-<a href="$Link">Zurück</a> &nbsp; <a href="{$Top.GenericPageLink(Clothing, 'printuserlabels/')}{$Record.ID}" target="_blank">Kleidungslabels drucken</a>
+<a href="$Link">Zurück</a> &nbsp; <a href="{$Top.GenericPageLink(Clothing, 'printuserlabels/')}{$Record.ID}" target="_blank">Kleidungslabels drucken</a> &nbsp; <a target="_blank" href="{$Top.Link}printconfirmation/{$Record.ID}">Bestätigung drucken</a>
