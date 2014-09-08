@@ -10,8 +10,7 @@ class Resource extends MaterialDataObject {
 			'MinimumQuantity' => 'Int'
 		);
 
-	static $has_one = array('Category' => 'ResourceCategory',
-		'Picture' => 'Image');
+	static $has_one = array();
 
 	static $singular_name = "Artikel";
 	static $plural_name = "Artikel";
