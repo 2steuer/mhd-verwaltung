@@ -1,7 +1,7 @@
 <table class="record_list">
 <tr>
-	<th>Kategorie</th>
 	<th>Name</th>
+    <th>Barcode</th>
 	<th>Bestand</th>
 
 	<% if ShowView %>
@@ -19,8 +19,8 @@
 
 <% loop ActiveRecords %>
 <tr class="$EvenOdd">
-	<td class="col1">$Category.Name</td>
 	<td class="col2">$Name</td>
+    <td class="col2">$Barcode</td>
 
 	<td class="col2 $WarningClass">$Quantity</td>
 	<% if Top.ShowView %>

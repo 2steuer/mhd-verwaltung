@@ -7,7 +7,8 @@ class Resource extends MaterialDataObject {
 			'Barcode' => 'Varchar',
 			'Quantity' => 'Int',
 			'WarningQuantity' => 'Int',
-			'MinimumQuantity' => 'Int'
+			'MinimumQuantity' => 'Int',
+            'OrderingNumber' => 'Varchar'
 		);
 
 	static $has_one = array();
@@ -22,17 +23,17 @@ class Resource extends MaterialDataObject {
 			'Quantity' => 'Bestand',
 			'WarningQuantity' => 'Bestand Warnung',
 			'MinimumQuantity' => 'Minimalbestand',
-			'Category' => 'Kategorie'
+			'Category' => 'Kategorie',
+            'OrderingNumber' => 'Bestellnummer'
     );
 
 	public function getFrontendFields($params = null) {
 
 		$fields = new FieldList(
-			DropDownField::create('CategoryID', 'Kategorie')
-				->setSource(ResourceCategory::get()->filter(array('Active'=>'1'))->map('ID', 'Name')),
 			TextField::create('Name', 'Bezeichnung'),
 			TextAreaField::create('Description', 'Beschreibung'),
 			TextField::create('Barcode', 'Barcode'),
+            TextField::create('OrderingNumber', 'Bestellnummer'),
 			NumericField::create('Quantity', 'Bestand'),
 			NumericField::create('WarningQuantity', 'Bestand Warnung'),
 			NumericField::create('MinimumQuantity', 'Mindestbestand')

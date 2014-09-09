@@ -15,19 +15,19 @@
 <td>$Description</td>
 </tr>
 
-<tr>
-<td>Barcode</td>
-<td>$Barcode</td>
-</tr>
+    <tr>
+        <td>Barcode</td>
+        <td>$Barcode</td>
+    </tr>
+
+    <tr>
+        <td>Bestellnummer</td>
+        <td>$OrderingNumber</td>
+    </tr>
 
 <tr>
 <td>Bestand</td>
 <td class="$WarningClass">$Quantity</td>
-</tr>
-
-<tr>
-<td>Bild</td>
-<td>$Picture.SetWidth(350)</td>
 </tr>
 
 </table>

@@ -24,4 +24,8 @@ class CostCenter extends MaterialDataObject {
 
 		return $fields;
 	}
+
+    public function validate() {
+        return parent::validate();
+    }
 }
