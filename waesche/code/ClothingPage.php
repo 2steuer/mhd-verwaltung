@@ -8,7 +8,9 @@ class ClothingPage_Controller extends GenericManagementPage_Controller {
 	static $allowed_actions = array(
 		'printlabels',
 		'printuserlabels',
-		'printstocklabels'
+		'printstocklabels',
+        'doclothingaction',
+        'printchangerequest'
 	);
 
 	public function index($request) {
@@ -17,8 +19,19 @@ class ClothingPage_Controller extends GenericManagementPage_Controller {
 		return parent::index($request);
 	}
 
+    public function doclothingaction($request) {
+        $action = $request->postVar('redirect-action');
+
+        Session::set('oldrequest', $request);
+
+        return $this->redirect($action);
+    }
+
 	public function printlabels($request) {
-		$clothes = Clothing::get()->filter(array('Active'=> '1', 'ID' => $request->postVar('SelectPrint')));
+        $oldrequest = Session::get('oldrequest');
+        Session::clear('oldrequest');
+
+		$clothes = Clothing::get()->filter(array('Active'=> '1', 'ID' => $oldrequest->postVar('SelectPrint')));
 
 		return $this->renderWith(array('Clothing_labels', 'Page'), array('Clothings' => $clothes));		
 	}
@@ -36,6 +49,20 @@ class ClothingPage_Controller extends GenericManagementPage_Controller {
 
 		return $this->renderWith(array('Clothing_labels', 'Page'), array('Clothings' => $clothes));
 	}
+
+    public function printchangerequest($request) {
+        $oldrequest = Session::get('oldrequest');
+        Session::clear('oldrequest');
+
+        $clothes = Clothing::get()->filter(array('Active' => '1', 'ID' => $oldrequest->postVar('SelectPrint')));
+        $staffmember = StaffMember::get()->byID($oldrequest->postVar('StaffMemberID'));
+
+        return $this->renderWith(array('Clothing_printchangerequest', 'Page'), array('Clothings' => $clothes, 'NewStaffMember' => $staffmember));
+    }
+
+    public function StaffMembers() {
+        return StaffMember::get()->filter('Active', '1')->sort('Name');
+    }
 
 	public function SearchForm() {
 		$fields = new FieldList(

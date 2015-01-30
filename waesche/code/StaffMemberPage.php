@@ -24,8 +24,19 @@ class StaffMemberPage extends GenericManagementPage {
 
 class StaffMemberPage_Controller extends GenericManagementPage_Controller {
     static $allowed_actions = array(
-        'printconfirmation'
+        'printconfirmation',
+        'index',
+        'view'
     );
+    public function StaffMembers() {
+        return StaffMember::get()->filter('Active', '1')->sort('Name');
+    }
+
+    public function view($request) {
+        Requirements::javascript('waesche/js/label-checkboxes.js');
+
+        return parent::view($request);
+    }
 
     public function printconfirmation($request) {
         $id = $request->param('ID');
@@ -33,4 +44,5 @@ class StaffMemberPage_Controller extends GenericManagementPage_Controller {
 
         return $this->customise(array('StaffMember' => $member));
     }
+
 }

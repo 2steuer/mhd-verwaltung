@@ -58,13 +58,13 @@ class CategoryPage_Controller extends Page_Controller {
 
 		if($edit) {
 			$actions = new FieldList(
-					CancelFormAction::create($this->Link(), 'Abbrechen'),
+					CancelFormAction::create(Session::get('back-url'), 'Abbrechen'),
 					FormAction::create('edit_supplier_action', 'Speichern')
 				);
 		}
 		else {
 			$actions = new FieldList(
-					CancelFormAction::create($this->Link(), 'Abbrechen'),
+					CancelFormAction::create(Session::get('back-url'), 'Abbrechen'),
 					FormAction::create('new_supplier_action', 'Speichern')
 				);
 		}
@@ -92,7 +92,7 @@ class CategoryPage_Controller extends Page_Controller {
 			);
 
 		$actions = new FieldList(
-				CancelFormAction::create($this->Link(), 'Abbrechen'),
+				CancelFormAction::create(Session::get('back-url'), 'Abbrechen'),
 				FormAction::create('delete_supplier_action', 'Löschen')
 			);
 

@@ -14,7 +14,14 @@ $(document).ready(function() {
 	});
 
 	$("#print_link").click(function() {
+        $("#form-destination").val('printlabels');
 		$("#print_label_checkform").submit();
 		return false;
 	});
+
+    $("#print_change_request").click(function() {
+       $("#form-destination").val("printchangerequest");
+        $("#print_label_checkform").submit();
+        return false;
+    });
 });

@@ -48,6 +48,8 @@ class Page_Controller extends ContentController {
 	public function init() {
 		parent::init();
 
+        Session::set('back-url', $this->getRequest()->getHeader('Referer'));
+
         Requirements::css('mysite/css/normalize.min.css');
         Requirements::css('mysite/css/format.css');
 

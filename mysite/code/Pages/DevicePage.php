@@ -145,7 +145,7 @@ class DevicePage_Controller extends Page_Controller {
 			);
 
 		$actions = new FieldList(
-			CancelFormAction::create($this->Link(), 'Abbrechen'),
+			CancelFormAction::create(Session::get('back-url'), 'Abbrechen'),
 			FormAction::create('add_checkrecord_action', 'Eintragen')
 		);
 
@@ -164,7 +164,7 @@ class DevicePage_Controller extends Page_Controller {
 			);
 
 		$actions = new FieldList(
-				CancelFormAction::create($this->Link().'detail/'.$record->Check()->DeviceID, 'Abbrechen'),
+				CancelFormAction::create(Session::get('back-url'), 'Abbrechen'),
 				FormAction::create('delete_checkrecord_action', 'Löschen')
 			);
 
@@ -225,7 +225,7 @@ class DevicePage_Controller extends Page_Controller {
 
 		if($edit) {
 			$actions = new FieldList(
-				CancelFormAction::create($this->Link().'edit/'.$device->ID, 'Abbrechen'),
+				CancelFormAction::create(Session::get('back-url'), 'Abbrechen'),
 				FormAction::create('edit_check_action', 'Speichern')
 			);
 		}
@@ -257,7 +257,7 @@ class DevicePage_Controller extends Page_Controller {
 			);
 
 		$actions = new FieldList(
-				CancelFormAction::create($this->Link().'edit/'.$dev->DeviceID, 'Abbrechen'),
+				CancelFormAction::create(Session::get('back-url'), 'Abbrechen'),
 				FormAction::create('delete_check_action', 'Löschen')
 			);
 
@@ -312,7 +312,7 @@ class DevicePage_Controller extends Page_Controller {
 			);
 
 		$actions = new FieldList(
-				CancelFormAction::create($this->Link(), 'Abbrechen'),
+				CancelFormAction::create(Session::get('back-url'), 'Abbrechen'),
 				FormAction::create('delete_device_action', 'Löschen')
 			);
 
@@ -336,7 +336,7 @@ class DevicePage_Controller extends Page_Controller {
 
 		if(is_object($dev)) {
 			$actions = new FieldList(
-				CancelFormAction::create($this->Link(), 'Zurück'),
+				CancelFormAction::create(Session::get('back-url'), 'Zurück'),
 				FormAction::create('edit_device_action')->setTitle('Speichern')
 				);
 
@@ -344,7 +344,7 @@ class DevicePage_Controller extends Page_Controller {
 		}
 		else {
 			$actions = new FieldList(
-					CancelFormAction::create($this->Link(), 'Zurück'),
+					CancelFormAction::create(Session::get('back-url'), 'Zurück'),
 					FormAction::create('add_device_action')->setTitle('Erstellen')
 				);
 		}

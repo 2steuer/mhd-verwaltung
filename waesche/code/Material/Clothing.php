@@ -4,12 +4,13 @@ class Clothing extends MaterialDataObject {
 	static $db = array(
 		'IDCode' => 'Varchar',
 		'Size' => 'Varchar',
-		'Notes' => 'Text'
+		'Notes' => 'Text',
+        'ChangeInProgress' => 'Boolean',
 	);
 
 	static $has_one = array(
 		'Type' => 'ClothingType',
-		'Owner' => 'StaffMember'
+		'Owner' => 'StaffMember',
 	);
 
 	static $singular_name = 'Kleidungsstück';
@@ -38,7 +39,11 @@ class Clothing extends MaterialDataObject {
 			'IDCode' => array(
 				'title' => 'ID',
 				'filter' => 'PartialMatchFilter'
-				)
+				),
+            'ChangeInProgress' => array(
+                'title' => 'Änderungsauftrag',
+                'field' => 'CheckboxField'
+            )
 		);
 
 	public function getFrontendFields($params = null) {
@@ -57,8 +62,8 @@ class Clothing extends MaterialDataObject {
 							->filter('Active', '1')
 							->sort('Name')
 							->map('ID', 'Name')
-					)
-				->setEmptyString('Lager'),
+					),
+            CheckboxField::create('ChangeInProgress', 'Änderung bei Wäscherei'),
 			TextAreaField::create('Notes', 'Bemerkungen')
 		);
 
@@ -111,7 +116,8 @@ class Clothing extends MaterialDataObject {
         $filters = array(
             'TypeID' => new ExactMatchFilter('TypeID'),
             'Size' => new PartialMatchFilter('Size'),
-            'IDCode' => new PartialMatchFilter('IDCode')
+            'IDCode' => new PartialMatchFilter('IDCode'),
+            'ChangeInProgress' => new ExactMatchFilter('ChangeInProgress')
         );
         return new SearchContext(
             $this->class,

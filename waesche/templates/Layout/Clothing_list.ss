@@ -16,7 +16,8 @@ $CustomSearchForm</div>
 <% end_if %>
 
 
-<form id="print_label_checkform" method="post" action="{$Link}printlabels" target="_blank">
+<form id="print_label_checkform" method="post" action="{$Link}doclothingaction" target="_blank">
+    <input type="hidden" name="redirect-action" value="" id="form-destination" />
 <table class="record_list">
 <thead>
     <tr>
@@ -24,7 +25,7 @@ $CustomSearchForm</div>
 	<th>Größe</th>
 	<th>Standort</th>
 	<th>ID</th>
-
+    <th>&nbsp;</th>
 	<% if ShowView %>
 	<th>Details</th>
 	<% end_if %>
@@ -37,7 +38,7 @@ $CustomSearchForm</div>
 	<th>Löschen</th>
 	<% end_if %>
 
-	<th>Label</th>
+	<th>&nbsp;</th>
 </tr>
 </thead>
 
@@ -45,15 +46,11 @@ $CustomSearchForm</div>
 <tr class="$EvenOdd">
 	<td class="col1">{$Type.Name}</td>
 	<td>$Size</td>
-	<td>
-	<% if Owner %>
-	$Owner.Name
-	<% else %>
-	Lager
-	<% end_if %>
-	</td>
+	<td>$Owner.Name</td>
 
 	<td>$IDCode</td>
+
+    <td class="icon_col"><% if $ChangeInProgress %><img src="mysite/img/out.png" alt="Änderung in Auftrag gegeben" /><% end_if %></td>
 
 	<% if Top.ShowView %>
 <td class="icon_col"><a href="{$Top.Link}view/$ID"><img src="mysite/img/clipboard.png" alt="Details" /></a></td>
@@ -72,18 +69,26 @@ $CustomSearchForm</div>
 </tr>
 <% end_loop %>
 </table>
-</form>
+
 
 <div id="print_actions">
 Wählen: <a href="#" id="all_link">Alle</a> | <a href="#" id="none_link">Keine</a>
 </div>
 
 <br />
+    Aufgaben:
+    <ul>
 <% if ShowAdd %>
-<a href="{$Top.Link}add">$SingularName hinzufügen</a>&nbsp;
+<li><a href="{$Top.Link}add">$SingularName hinzufügen</a></li>
 <% end_if %>
-<a href="#" id="print_link">Gewählte Labels drucken</a>
-
+<li><a href="#" id="print_link">Gewählte Labels drucken</a></li>
+    <li>Gewählte umlabeln auf <select name="StaffMemberID">
+    <% loop $StaffMembers %>
+        <option value="$ID">$Name</option>
+    <% end_loop %>
+    </select> <a href="#" id="print_change_request">Auftrag erzeugen</a></li>
+    </ul>
+</form>
 <% else %>
 Keine $PluralName vorhanden.
 <% if ShowAdd %>

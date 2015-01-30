@@ -38,6 +38,7 @@ class GenericManagementPage_Controller extends Page_Controller {
 		'view',
 		'add',
 		'delete',
+        'deleteall' => 'ADMIN',
 		'edit',
 		'print',
 		'RecordForm',
@@ -193,10 +194,24 @@ class GenericManagementPage_Controller extends Page_Controller {
 		return $this->redirect('index');
 	}
 
-	/*
-	 * View
-	*/
-	public function view($request) {
+    /*
+     * Delete all
+     */
+    public function deleteall($request) {
+        $records = DataObject::get($this->ModelName);
+
+        foreach($records as $record) {
+            print("Deleting ".$record->ID."...<br />");
+            $record->delete();
+
+        }
+        print("Done.");
+    }
+
+    /*
+     * View
+    */
+    public function view($request) {
 		$id = $request->param('ID');
 
 		$record = DataObject::get($this->ModelName)->byID($id);

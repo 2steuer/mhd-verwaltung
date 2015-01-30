@@ -1,4 +1,5 @@
 <% with Booking %>
+    <a href="$Top.Link">Zurück</a>
 <h3>Details zur Buchung</h3>
     <table class="dev_details">
         <tr>
@@ -29,6 +30,9 @@
                 </tr>
             <% end_loop %>
         </table>
+        <br />
+        <a href="$Top.Link">Zurück</a>
+
     <% else %>
         <br />
     Keine Artikel im Vorgang.

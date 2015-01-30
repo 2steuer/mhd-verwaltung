@@ -27,6 +27,8 @@ class Resource extends MaterialDataObject {
             'OrderingNumber' => 'Bestellnummer'
     );
 
+    static $summary_fields = array('Name', 'Barcode', 'Quantity');
+
 	public function getFrontendFields($params = null) {
 
 		$fields = new FieldList(
