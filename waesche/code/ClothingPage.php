@@ -114,4 +114,8 @@ class ClothingPage_Controller extends GenericManagementPage_Controller {
 			TextField::create('IDCode', 'ID')
 		);
 	}
+
+    public function DateString() {
+        return date("d.m.Y");
+    }
 }

@@ -14,7 +14,7 @@
 
             #main {
                 position: absolute;
-                top: 87mm;
+                top: 67mm;
                 left: 20mm;
             }
 
@@ -24,6 +24,24 @@
 
             #clothinglist td {
                 padding-right: 4mm;
+            }
+
+            footer {
+                width: 14cm;
+                margin-bottom: 8mm;
+            }
+
+            footer div {
+                float:left;
+                display:block;
+                width: 25%;
+                font-size: 7pt;
+            }
+
+            div#date {
+                position: absolute;
+                top: 6cm;
+                left: 14cm;
             }
 
 	    </style>
@@ -39,6 +57,8 @@ Herr Klein <br />
 Otto-Hahn-Straße 4 <br />
 D-21509 Glinde <br  />
 </div>
+
+<div id="date">$DateString</div>
 
 <div id="main">
     <h3>Änderung Zuordnung Dienstbekleidung</h3>
@@ -82,6 +102,38 @@ D-21509 Glinde <br  />
     Herzlichen Dank,<br />
     Mit freundlichen Grüßen,<br /><br /><br /><br />
     Louisa Panier
+<br /><br />
+    <footer>
+        <div>
+            Am Weinberg 8 <br />
+            22926 Ahrensburg<br /><br />
+            info@malteserstormarn.de<br />
+            www.malteser-stormarn.de<br />
+        </div>
+        <div>
+            Tel.: 04102 / 19 215<br />
+            Fax: 04102 / 21 05 20<br /><br />
+            Bankverbindung:<br />
+            DKM Münster<br />
+            DE42400602650033100200<br />
+            BIC: GENODEM1DKM<br />
+        </div>
+        <div>Steuernr.:<br />
+            218/5761/0039<br />
+            (Organträger)<br /><br />
+            Malteser Hilfsdienst e.V.,<br />
+            Köln<br />
+            Amtsgericht Köln<br />
+            VR 4726</div>
+        <div>Präsident:<br />
+            Dr. Constantin von<br />
+            Brandenstein-Zeppelin<br />
+            Geschäftsführender Vorstand:<br />
+            Verena Hölken<br />
+            Karl Prinz zu Löwenstein (Vors.),<br />
+            Dr. Elmar Pankau,<br />
+            Douglas Graf von Saurma-Jeltsch</div>
+    </footer>
 </div>
 
 </body>
