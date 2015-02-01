@@ -4,15 +4,16 @@
 <form id="print_label_checkform" method="post" action="{$Top.GenericPageLink(Clothing, 'doclothingaction')}" target="_blank">
     <input type="hidden" name="redirect-action" value="" id="form-destination" />
 
-<table class="list_table">
+<table class="record_list">
 
 <tr>
 <th>Kleidungsstück</th>
 <th>Größe</th>
 <th>ID</th>
+    <th>Träger</th>
     <th>&nbsp;</th>
-    <th>Details</th>
-    <th>Bearb.</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
     <th>&nbsp;</th>
 </tr>
 
@@ -21,6 +22,7 @@
 <td>$Type.Name</td>
 <td>$Size</td>
 <td>$IDCode</td>
+    <td>$Owner.Name</td>
     <td class="icon_col"><% if $ChangeInProgress %><img src="mysite/img/out.png" alt="Änderung in Auftrag gegeben" /><% end_if %></td>
     <td class="icon_col"><a href="{$Top.ClothingPageLink('view/')}{$ID}"><img src="mysite/img/clipboard.png" alt="Details" /></a></td>
     <td class="icon_col"><a href="{$Top.ClothingPageLink('edit/')}{$ID}"><img src="mysite/img/pencil.png" alt="Bearbeiten" /></a></td>
