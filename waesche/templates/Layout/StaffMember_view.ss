@@ -69,6 +69,8 @@
                 <option value="$ID">$Name</option>
             <% end_loop %>
         </select> <a href="#" id="print_change_request">Auftrag erzeugen</a></li>
+        <li><a href="#" id="add_marked">Gewählte zur Merkliste hinzufügen</a></li>
+
     </ul>
 
 

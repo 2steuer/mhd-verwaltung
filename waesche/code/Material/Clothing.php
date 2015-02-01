@@ -6,6 +6,7 @@ class Clothing extends MaterialDataObject {
 		'Size' => 'Varchar',
 		'Notes' => 'Text',
         'ChangeInProgress' => 'Boolean',
+        'Marked' => 'Boolean'
 	);
 
 	static $has_one = array(

@@ -1,8 +1,5 @@
-<% if StockClothing %>
+<% if MarkedClothes %>
 
-<div id="search_filter_form">
-<h3>Kleidungsstücke filtern</h3>
-$CustomSearchForm</div>
 
 <form id="print_label_checkform" method="post" action="{$Top.GenericPageLink(Clothing, 'doclothingaction')}" target="_blank">
     <input type="hidden" name="redirect-action" value="" id="form-destination" />
@@ -19,7 +16,7 @@ $CustomSearchForm</div>
     <th>&nbsp;</th>
 </tr>
 
-<% loop StockClothing %>
+<% loop MarkedClothes %>
 <tr class="$EvenOdd">
 <td>$Type.Name</td>
 <td>$Size</td>
@@ -40,18 +37,13 @@ $CustomSearchForm</div>
 <br />
     Aufgaben:
     <ul>
-        <% if ShowAdd %>
-            <li><a href="{$Top.Link}add">$SingularName hinzufügen</a></li>
-        <% end_if %>
-        <li><a href="{$Top.PrintLabelsLink}" target="_blank">Kleidungslabels drucken</a></li>
         <li><a href="#" id="print_link">Gewählte Labels drucken</a></li>
         <li>Gewählte umlabeln auf <select name="StaffMemberID">
             <% loop $Top.StaffMembers %>
                 <option value="$ID">$Name</option>
             <% end_loop %>
         </select> <a href="#" id="print_change_request">Auftrag erzeugen</a></li>
-        <li><a href="#" id="add_marked">Gewählte zur Merkliste hinzufügen</a></li>
-
+        <li><a href="#" id="remove_marked">Gewählte von der Merkliste löschen</a></li>
     </ul>
 
 
@@ -59,5 +51,5 @@ $CustomSearchForm</div>
     </form>
 <% else %>
 <br />
-Keine Kleidung im Lager.
+Keine Kleidung auf der Merkliste.
 <% end_if %>

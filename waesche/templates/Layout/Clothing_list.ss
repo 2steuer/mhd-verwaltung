@@ -87,6 +87,7 @@ Wählen: <a href="#" id="all_link">Alle</a> | <a href="#" id="none_link">Keine</
         <option value="$ID">$Name</option>
     <% end_loop %>
     </select> <a href="#" id="print_change_request">Auftrag erzeugen</a></li>
+        <li><a href="#" id="add_marked">Gewählte zur Merkliste hinzufügen</a></li>
     </ul>
 </form>
 <% else %>

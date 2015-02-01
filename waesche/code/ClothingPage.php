@@ -6,6 +6,9 @@ class ClothingPage extends GenericManagementPage {
 
 class ClothingPage_Controller extends GenericManagementPage_Controller {
 	static $allowed_actions = array(
+        'togglemarked',
+        'removemarked',
+        'addmarked',
 		'printlabels',
 		'printuserlabels',
 		'printstocklabels',
@@ -18,6 +21,17 @@ class ClothingPage_Controller extends GenericManagementPage_Controller {
 
 		return parent::index($request);
 	}
+
+    public function togglemarked($request) {
+        $id = $request->param('ID');
+
+        $clothing = Clothing::get()->byID($id);
+
+        $clothing->Marked = ($clothing->Marked == '0') ? '1' : '0';
+        $clothing->write();
+
+        return $this->redirectBack();
+    }
 
     public function doclothingaction($request) {
         $action = $request->postVar('redirect-action');
@@ -58,6 +72,34 @@ class ClothingPage_Controller extends GenericManagementPage_Controller {
         $staffmember = StaffMember::get()->byID($oldrequest->postVar('StaffMemberID'));
 
         return $this->renderWith(array('Clothing_printchangerequest', 'Page'), array('Clothings' => $clothes, 'NewStaffMember' => $staffmember));
+    }
+
+    public function removemarked($request) {
+        $oldrequest = Session::get('oldrequest');
+        Session::clear('oldrequest');
+
+        $clothes = Clothing::get()->filter(array('Active' => '1', 'ID' => $oldrequest->postVar('SelectPrint')));
+
+        foreach($clothes as $clothing) {
+            $clothing->Marked = '0';
+            $clothing->write();
+        }
+
+        return $this->redirect($oldrequest->getHeader('Referer'));
+    }
+
+    public function addmarked($request) {
+        $oldrequest = Session::get('oldrequest');
+        Session::clear('oldrequest');
+
+        $clothes = Clothing::get()->filter(array('Active' => '1', 'ID' => $oldrequest->postVar('SelectPrint')));
+
+        foreach($clothes as $clothing) {
+            $clothing->Marked = '1';
+            $clothing->write();
+        }
+
+        return $this->redirect($oldrequest->getHeader('Referer'));
     }
 
     public function StaffMembers() {

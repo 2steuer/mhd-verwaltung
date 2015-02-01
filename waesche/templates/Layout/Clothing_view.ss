@@ -31,6 +31,18 @@
 <td>$Notes</td>
 </tr>
 
+   <tr>
+       <td>Merkliste</td>
+       <td><a href="{$Top.Link}togglemarked/$ID">
+           <% if $Marked %>
+           Von Merkliste entfernen
+           <% else %>
+               Zu Merkliste hinzufügen
+           <% end_if %>
+       </a>
+       </td>
+   </tr>
+
 
 </table>
 <% end_with %>
