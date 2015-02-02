@@ -17,7 +17,7 @@
 
     <tr>
         <td>Barcode</td>
-        <td>$Barcode</td>
+        <td>$Barcode &nbsp; <a href="#" id="print_single_bc">drucken</a></td>
     </tr>
 
     <tr>
@@ -29,10 +29,6 @@
 <td>Bestand</td>
 <td class="$WarningClass">$Quantity</td>
 </tr>
-    <tr>
-        <td>Barcode</td>
-        <td><a href="#" id="print_single_bc">drucken</a></td>
-    </tr>
 
 </table>
 
