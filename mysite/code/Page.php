@@ -59,6 +59,7 @@ class Page_Controller extends ContentController {
         Requirements::javascript('mysite/js/modernizr-2.6.2.min.js');
 
         Requirements::javascript('lager/js/barcode_scan.js');
+
 	}
 
 	public function NoteForm() {

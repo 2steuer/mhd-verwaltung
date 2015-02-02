@@ -101,7 +101,7 @@ class GenericManagementPage_Controller extends Page_Controller {
 	public function add($request) {
 		Session::set('form_action', 'add');
 
-		return $this->renderWith(array($this->ModelName.'_add', 'GenericManagement_form', 'Page'), array('Form' => $this->RecordForm()));
+		return $this->renderWith(array($this->ModelName.'_add',$this->ModelName.'_form', 'GenericManagement_form', 'Page'), array('Form' => $this->RecordForm()));
 	}
 
 
@@ -140,6 +140,7 @@ class GenericManagementPage_Controller extends Page_Controller {
 		return $this->renderWith(
 				array(
 					$this->ModelName.'_edit',
+                    $this->ModelName.'_form',
 					'GenericManagement_form',
 					'Page'
 				),

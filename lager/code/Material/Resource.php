@@ -81,4 +81,14 @@ class Resource extends MaterialDataObject {
 
 		return $classes[$this->WarningLevel()];
 	}
+
+    public function RealBarcode() {
+        $barcode = $this->Barcode;
+        if(strlen($barcode) == 12) {
+            return "0".$barcode;
+        }
+        else {
+            return $barcode;
+        }
+    }
 }
