@@ -274,7 +274,7 @@ class DevicePage_Controller extends Page_Controller {
 		$dev->Checks()->add($check);
 		$dev->write();
 
-		return $this->redirect($this->Link().'edit/'.$check->DeviceID);
+        return $this->redirect($this->Link().'edit/'.$check->DeviceID);
 	}
 
 	function edit_check_action($data, $form) {

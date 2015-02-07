@@ -10,7 +10,6 @@ class Check extends MaterialDataObject {
 			'Supplier' => 'Supplier',
 			'Type' => 'CheckType',
 			'Device'=>'Device'
-
 		);
 
 	static $has_many = array(
@@ -55,9 +54,9 @@ class Check extends MaterialDataObject {
 	} 
 
 	public function onBeforeWrite() {
-		parent::onBeforeWrite();
+        parent::onBeforeWrite();
 
-		if($this->Active = '0') {
+		if($this->Active == '0') {
 			$this->DeviceID = '';
 		}
 	}

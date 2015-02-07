@@ -3,6 +3,7 @@
 class GenericModelSubpagePage extends Page {
 	static $db = array(
 			'ModelName' => 'Varchar',
+            'FunctionName' => 'Varchar',
 			'ShowView' => 'Boolean',
 			'ShowEdit' => 'Boolean',
 			'ShowDelete' => 'Boolean',
@@ -20,7 +21,8 @@ class GenericModelSubpagePage extends Page {
 		$fields->addFieldsToTab('Root.Management',array(
 			DropDownField::create('ModelName', 'Zu verwaltende Klasse')
 					->setSource($map),
-			CheckBoxField::create('ShowAdd', 'Hinzufügen'),
+            TextField::create('FunctionName', 'Methode an der Elternseite'),
+            CheckBoxField::create('ShowAdd', 'Hinzufügen'),
 			CheckBoxField::create('ShowView', 'Details anzeigen'),
 			CheckBoxField::create('ShowEdit', 'Editieren'),
 			CheckBoxField::create('ShowDelete', 'Löschen'),
@@ -65,14 +67,18 @@ class GenericModelSubpagePage_Controller extends Page_Controller {
 		$tbl = $sing->join_table();
 		$sort_field = $sing->sort_field();
 
+        if(!is_callable(array($this->Parent(), $this->FunctionName))) {
+            die("ERROR!");
+        }
+
 		if($tbl != '') {
-			$objects = DataObject::get($this->ModelName)
+			$objects = $this->Parent()->{$this->FunctionName}()
 				->filter('Active', '1')
 				->leftJoin($tbl, $sing->join_field()." = ".$tbl.".ID")
 				->sort($sort_field);
 		}
 		else {
-			$objects = DataObject::get($this->ModelName)
+			$objects = $this->Parent()->{$this->FunctionName}()
 				->filter('Active', '1')
 				->sort($sort_field);
 		}

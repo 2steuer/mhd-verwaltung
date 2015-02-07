@@ -14,18 +14,32 @@ class SendEmailController extends Controller {
 		foreach($members as $member) {
 			$start = microtime(true);
 
+            print("Member: " .$member->FirstName." ".$member->Surname ."\n");
+
 			$checklist = array(1=>new ArrayList(), 2=>new ArrayList());
 			foreach($member->SubscribedCategories() as $category) {
-				
+				print("\tCategory: ".$category->Name."\n");
+
 				foreach($category->Devices()->filter(array('Active' => '1')) as $device) {
+                    print("\t\tDevice: " . $device->Name."\n");
+
 					foreach($device->Checks()->filter(array('Active' => '1')) as $check) {
 						$level = $check->CheckAlert();
+
+                        print("\t\t\tCheck: " . $check->TypeName() . " (".$level.")");
+
 						if($level > 0) {
-							
+
+                            print("\tDevice " . $device->Name . " - " . $level . "\n");
+
 							if(!$this->wasAlreadySent($member->ID, $check->ID, $level)) {
-								$checklist[$level]->add($check);
+								print("\t\t\tNot sent jet...\n");
+                                $checklist[$level]->add($check);
 								$this->addSendNotification($member->ID, $check->ID, $level);
 							}
+                            else {
+                                print("\t\tAlready sent.\n");
+                            }
 						}
 					}
 				}
@@ -45,7 +59,7 @@ class SendEmailController extends Controller {
 				$mail->send();
 				$count++;
 
-				print("Email to ".$member->ID." ".$member->FirstName . " ". $member->Surname."\n");
+				print("\nEmail to ".$member->ID." ".$member->FirstName . " ". $member->Surname."\n\n\n");
 			}
 		}
 
