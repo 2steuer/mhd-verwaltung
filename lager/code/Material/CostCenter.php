@@ -8,6 +8,8 @@ class CostCenter extends MaterialDataObject {
 			'Adress' => 'Text'
 		);
 
+    static $has_one = array('HolderPage' => 'LagerParentPage');
+
 	static $field_labels = array(
 			'Description' => 'Beschreibung',
 			'Contact' => 'Ansprechpartner',

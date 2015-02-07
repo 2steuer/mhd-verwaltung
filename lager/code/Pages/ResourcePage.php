@@ -6,13 +6,14 @@
  * Time: 22:53
  */
 
-class ResourcePage extends GenericManagementPage {
-    static $defaults = array('ModelName' => 'Resource');
+class ResourcePage extends GenericModelSubpagePage {
+    static $defaults = array('ModelName' => 'Resource', 'FunctionName'=>'Resources');
 
 }
 
-class ResourcePage_Controller extends GenericManagementPage_Controller {
+class ResourcePage_Controller extends GenericModelSubpagePage_Controller {
     static $allowed_actions = array(
+        'index',
         'getbarcode',
         'barcodepdf'
     );
@@ -22,6 +23,12 @@ class ResourcePage_Controller extends GenericManagementPage_Controller {
 
         Requirements::javascriptTemplate("lager/js/fetch_barcode.js", array('AjaxBarcodeUrl' => $this->Link('getbarcode')));
         Requirements::javascript("lager/js/resource_checkboxes.js");
+    }
+
+    public function index($request) {
+        Requirements::javascript("lager/js/resource_checkboxes.js");
+
+        return parent::index($request);
     }
 
     public function getbarcode($request) {
@@ -34,7 +41,7 @@ class ResourcePage_Controller extends GenericManagementPage_Controller {
             for($i = 0; $i < 12; $i++) {
                 $barcode .= rand(0,9);
             }
-        } while(Resource::get()->filter(array('Barcode' => $barcode))->count() > 0);
+        } while($this->Parent()->Resources()->filter(array('Barcode' => $barcode))->count() > 0);
 
         $bc = new PDFBarcode();
         $barcode .= $bc->getChecksum($barcode, 'EAN13');

@@ -57,6 +57,18 @@ class GenericModelSubpagePage_Controller extends Page_Controller {
 		}
 	}
 
+    /*
+     * Get List of Objects...
+     */
+
+    protected function Records() {
+        if(!is_callable(array($this->Parent(), $this->FunctionName))) {
+            die("ERROR!");
+        }
+
+        return $this->Parent()->{$this->FunctionName}();
+    }
+
 	/*
 	 * Get all active Records
 	*/
@@ -67,18 +79,16 @@ class GenericModelSubpagePage_Controller extends Page_Controller {
 		$tbl = $sing->join_table();
 		$sort_field = $sing->sort_field();
 
-        if(!is_callable(array($this->Parent(), $this->FunctionName))) {
-            die("ERROR!");
-        }
+        $records = $this->Records();
 
 		if($tbl != '') {
-			$objects = $this->Parent()->{$this->FunctionName}()
+			$objects = $records
 				->filter('Active', '1')
 				->leftJoin($tbl, $sing->join_field()." = ".$tbl.".ID")
 				->sort($sort_field);
 		}
 		else {
-			$objects = $this->Parent()->{$this->FunctionName}()
+			$objects = $records
 				->filter('Active', '1')
 				->sort($sort_field);
 		}
@@ -124,6 +134,8 @@ class GenericModelSubpagePage_Controller extends Page_Controller {
 		}
 
 		$record->write();
+
+        $this->Records()->add($record);
 
 		return $this->redirect('index');
 	}

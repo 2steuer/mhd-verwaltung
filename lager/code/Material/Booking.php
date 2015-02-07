@@ -13,7 +13,9 @@ class Booking extends MaterialDataObject {
 
 	static $has_one = array('Member' => 'Member',
 		'Attachment' => 'File',
-		'CostCenter' => 'CostCenter');
+		'CostCenter' => 'CostCenter',
+        'HolderPage' => 'LagerParentPage'
+    );
 
 	static $has_many = array('Entries' => 'BookingEntry');
 

@@ -37,7 +37,7 @@ class ReportPage_Controller extends Page_Controller {
         $costcenter = $data['CostCenter'];
         $direction = $data['Direction'];
 
-        $theCostCenter = CostCenter::get()->byID($costcenter);
+        $theCostCenter = $this->Parent()->CostCenters()->byID($costcenter);
 
         return $this->render(array('Start' => $start,
                 'End' => $end,
@@ -50,7 +50,7 @@ class ReportPage_Controller extends Page_Controller {
         $start = strtotime($start) - 1;
         $end = strtotime($end) + (23 * 3600 + 59 * 60 + 59) + 1;
 
-        $bookings = Booking::get()->filter(array(
+        $bookings = $this->Parent()->Bookings()->filter(array(
                 'Active' => '1',
                 'Booked' => '1',
                 'Direction' => $direction,

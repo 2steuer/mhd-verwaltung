@@ -45,6 +45,8 @@ class BookingPage_Controller extends Page_Controller {
 		$record->MemberID = Member::currentUserID();
 		$record->write();
 
+        $this->Parent()->Bookings()->add($record);
+
 		return $this->redirect($this->Link().'edit/'.$record->ID);
 	}
 
@@ -53,7 +55,7 @@ class BookingPage_Controller extends Page_Controller {
 	*/
 	public function edit($request) {
 		$id = $request->param('ID');
-		$book = Booking::get()->byID($id);
+		$book = $this->Parent()->Bookings()->byID($id);
 
 		Session::set('booking_action', 'edit');
 		Session::set('booking_id', $id);
@@ -65,7 +67,7 @@ class BookingPage_Controller extends Page_Controller {
 
 	public function doEdit($data, $form) {
 		$id = Session::get('booking_id');
-		$book = Booking::get()->byID($id);
+		$book = $this->Parent()->Bookings()->byID($id);
 		$form->saveInto($book);
 		$book->write();
 
@@ -90,7 +92,7 @@ class BookingPage_Controller extends Page_Controller {
     public function doDelete($data, $form) {
         $id = Session::get('booking_id');
 
-        $book = Booking::get()->byID($id);
+        $book = $this->Parent()->Bookings()->byID($id);
         $book->Active = '0';
         $book->write();
 
@@ -111,7 +113,7 @@ class BookingPage_Controller extends Page_Controller {
     }
 
     public function doAddEntry($data, $form) {
-        $booking = Booking::get()->byID(Session::get('booking_id'));
+        $booking = $this->Parent()->Bookings()->byID(Session::get('booking_id'));
 
         if($entry = $booking->Entries()->find('ResourceID', $data['ResourceID'])) {
             $entry->Count += $data['Count'];
@@ -147,7 +149,7 @@ class BookingPage_Controller extends Page_Controller {
      */
 
     public function view($request) {
-        $booking = Booking::get()->byID($request->param('ID'));
+        $booking = $this->Parent()->Bookings()->byID($request->param('ID'));
 
         return $this->customise(array('Booking' => $booking, 'Title' => 'Vorgang vom '.$booking->dbObject('Date')->Nice()));
     }
@@ -160,7 +162,7 @@ class BookingPage_Controller extends Page_Controller {
         $booking = $request->param('ID');
 
         foreach($counts as $id=>$count) {
-            $entry = BookingEntry::get()->byID($id);
+            $entry = $this->Parent()->Bookings()->byID($id);
             if($entry->BookingID != $booking) {
                 return $this->httpError(500, 'Fehler, Angriff erkannt!');
             }
@@ -177,9 +179,9 @@ class BookingPage_Controller extends Page_Controller {
      * Quick Add Entry
      */
     public function quickAdd($data, $form) {
-        $booking = Booking::get()->byID($data['BookingID']);
+        $booking = $this->Parent()->Bookings()->byID($data['BookingID']);
 
-        $resource = Resource::get()->filter(array('Active' => '1', 'Barcode' => $data['Barcode']))->First();
+        $resource = $this->Parent()->Resources()->filter(array('Active' => '1', 'Barcode' => $data['Barcode']))->First();
 
         if($resource) {
             if($entry = $booking->Entries()->find('ResourceID', $resource->ID)) {
@@ -217,10 +219,10 @@ class BookingPage_Controller extends Page_Controller {
     }
 
     public function doBook($data, $form) {
-        $booking = Booking::get()->byID($data['BookingID']);
+        $booking = $this->Parent()->Bookings()->byID($data['BookingID']);
 
         foreach($booking->Entries() as $entry) {
-            $resource = Resource::get()->byID($entry->ResourceID);
+            $resource = $this->Parent()->Resources()->byID($entry->ResourceID);
 
             switch($booking->Direction) {
                 case 'in':
@@ -265,10 +267,10 @@ class BookingPage_Controller extends Page_Controller {
     }
 
     public function doUnBook($data, $form) {
-        $booking = Booking::get()->byID($data['BookingID']);
+        $booking = $this->Parent()->Bookings()->byID($data['BookingID']);
 
         foreach($booking->Entries() as $entry) {
-            $resource = Resource::get()->byID($entry->ResourceID);
+            $resource = $this->Parent()->Resources()->byID($entry->ResourceID);
 
             switch($booking->Direction) {
                 case 'in':
@@ -338,7 +340,7 @@ class BookingPage_Controller extends Page_Controller {
 
 		if($action == 'edit') {
 			$id = Session::get('booking_id');
-			$book = Booking::get()->byID($id);
+			$book = $this->Parent()->Bookings()->byID($id);
 			$form->loadDataFrom($book);
 		}
 
@@ -401,12 +403,12 @@ class BookingPage_Controller extends Page_Controller {
 	 * Template Functions
 	*/
 	public function BookedBookings() {
-		return Booking::get()->filter(array('Active' => '1', 
+		return $this->Parent()->Bookings()->filter(array('Active' => '1',
 			'Booked' => '1'))->sort(array('Date'=>'DESC'));
 	}
 
 	public function OpenBookings() {
-		return Booking::get()->filter(array('Active' => '1', 
+		return $this->Parent()->Bookings()->filter(array('Active' => '1',
 			'Booked' => '0'))->sort(array('Date' => 'ASC'));
 	}
 

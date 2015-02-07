@@ -11,7 +11,7 @@ class Resource extends MaterialDataObject {
             'OrderingNumber' => 'Varchar'
 		);
 
-	static $has_one = array();
+	static $has_one = array('HolderPage'=>'LagerParentPage');
 
 	static $singular_name = "Artikel";
 	static $plural_name = "Artikel";
