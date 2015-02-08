@@ -14,7 +14,9 @@ class ReportPage_Controller extends Page_Controller {
             DropDownField::create('Direction', 'Buchungsrichtung')
                 ->setSource(array('in' => 'Wareneingang', 'out' => 'Warenausgang'))
                 ->setValue('out'),
-            DropDownField::create('CostCenter', 'Kostenstelle')
+            //DropDownField::create('CostCenter', 'Kostenstelle')
+            //    ->setSource($this->Parent()->CostCenters()->filter('Active', '1')->map('ID', 'Name')),
+            CheckboxSetField::create('CostCenter', 'Kostenstellen')
                 ->setSource($this->Parent()->CostCenters()->filter('Active', '1')->map('ID', 'Name')),
             DateField::create('StartDate', 'Bericht von...')
                 ->setConfig('showcalendar', true)
@@ -37,7 +39,7 @@ class ReportPage_Controller extends Page_Controller {
         $costcenter = $data['CostCenter'];
         $direction = $data['Direction'];
 
-        $theCostCenter = $this->Parent()->CostCenters()->byID($costcenter);
+        $theCostCenter = $this->Parent()->CostCenters()->byIDs($costcenter);
 
         return $this->render(array('Start' => $start,
                 'End' => $end,
