@@ -15,7 +15,7 @@ class SupplierPage_Controller extends Page_Controller {
 		'DeleteForm');
 
 	public function Suppliers() {
-		return Supplier::get()->filter(array('Active'=>'1'));
+		return $this->Parent()->Suppliers()->filter(array('Active'=>'1'));
 	}
 
 	public function add($request) {
@@ -47,7 +47,7 @@ class SupplierPage_Controller extends Page_Controller {
 		$edit = false;
 
 		if(!empty($id)) {
-			$sup = Supplier::get()->byID($id);
+			$sup = $this->Parent()->Suppliers()->byID($id);
 			$edit = true;
 		}
 
@@ -95,7 +95,7 @@ class SupplierPage_Controller extends Page_Controller {
 	}
 
 	function DeleteForm() {
-		$sup = Supplier::get()->byID(Session::get('supplier_id'));
+		$sup = $this->Parent()->Suppliers()->byID(Session::get('supplier_id'));
 
 		$fields = new FieldList(
 				HiddenField::create('SupplierID', '', $sup->ID),
@@ -111,7 +111,7 @@ class SupplierPage_Controller extends Page_Controller {
 	}
 
 	function edit_supplier_action($data, $form) {
-		$sup = Supplier::get()->byID(Session::get('supplier_id'));
+		$sup = $this->Parent()->Suppliers()->byID(Session::get('supplier_id'));
 
 		$form->saveInto($sup);
 
@@ -127,12 +127,14 @@ class SupplierPage_Controller extends Page_Controller {
 
 		$sup->write();
 
+        $this->Parent()->Suppliers()->add($sup);
+
 		return $this->redirect('index');
 	}
 
 	function delete_supplier_action($data, $form) {
 		Session::clear('supplier_id');
-		$sup = Supplier::get()->byID($data["SupplierID"]);
+		$sup = $this->Parent()->Suppliers()->byID($data["SupplierID"]);
 
 		$sup->Active = '0';
 

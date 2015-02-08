@@ -26,15 +26,14 @@ class DevicePage_Controller extends Page_Controller {
 		'BarcodeSearchForm');
 
 	public function Devices() {
-		$dev = Device::get()->filter(array('Active' => '1'));
+		$dev = $this->Parent()->Devices()->filter(array('Active' => '1'));
 
 		return $dev;
 	}
 
 	public function Categories() {
 
-		return DeviceCategory::get()->filter(array('Active' => '1'))->sort('Name');
-		exit();
+		return $this->Parent()->DeviceCategories()->filter(array('Active' => '1'))->sort('Name');
 	}
 
 	public function init() {
@@ -46,7 +45,7 @@ class DevicePage_Controller extends Page_Controller {
 	}
 
 	public function detail($request) {
-		$dev = Device::get()->byID($request->param('ID'));
+		$dev = $this->Parent()->Devices()->byID($request->param('ID'));
 
 		if(!is_object($dev))
 			return $this->httpError(404, 'Device not found.');
@@ -87,7 +86,7 @@ class DevicePage_Controller extends Page_Controller {
 		Session::set('device_id', $id);
 
 		return $this->renderWith(array('DevicePage_edit', 'DevicePage', 'Page'), 
-			array('Title'=>'Gerät bearbeiten', 'Device'=>Device::get()->byID($id), 'Form'=>$this->DeviceForm()));
+			array('Title'=>'Gerät bearbeiten', 'Device'=>$this->Parent()->Devices()->byID($id), 'Form'=>$this->DeviceForm()));
 	}
 
 	public function editcheck($request) {
@@ -124,7 +123,7 @@ class DevicePage_Controller extends Page_Controller {
 
 	function NewCheckRecordForm() {
 		$member = Member::currentUser();
-		$device = Device::get()->byID(Session::get('device_id'));
+		$device = $this->Parent()->Devices()->byID(Session::get('device_id'));
 
 		$fields = new FieldList(
 			HiddenField::create('MemberID', '', $member->ID),
@@ -203,11 +202,11 @@ class DevicePage_Controller extends Page_Controller {
 		if(!empty($check_id)) {
 			$check = Check::get()->byID($check_id);
 			$edit = true;
-			$device = Device::get()->byID($check->DeviceID);
+			$device = $this->Parent()->Devices()->byID($check->DeviceID);
 
 		}
 		else {
-			$device = Device::get()->byID(Session::get('device_id'));
+			$device = $this->Parent()->Devices()->byID(Session::get('device_id'));
 		}
 
 		$fields = new FieldList(
@@ -270,7 +269,7 @@ class DevicePage_Controller extends Page_Controller {
 		$form->saveInto($check);
 		$check->write();
 
-		$dev = Device::get()->byID($check->DeviceID);
+		$dev = $this->Parent()->Devices()->byID($check->DeviceID);
 		$dev->Checks()->add($check);
 		$dev->write();
 
@@ -292,7 +291,7 @@ class DevicePage_Controller extends Page_Controller {
 		$check->Active = '0';
 		$check->write();
 
-		$device = Device::get()->byID($check->DeviceID);
+		$device = $this->Parent()->Devices()->byID($check->DeviceID);
 		$device->Checks()->remove($check);
 		$device->write();
 
@@ -304,7 +303,7 @@ class DevicePage_Controller extends Page_Controller {
 	*/
 
 	function DeleteForm() {
-		$dev = Device::get()->byID(Session::get('device_id'));
+		$dev = $this->Parent()->Devices()->byID(Session::get('device_id'));
 
 		$fields = new FieldList(
 				HiddenField::create('DeviceID', '', $dev->ID),
@@ -321,7 +320,7 @@ class DevicePage_Controller extends Page_Controller {
 
 	function DeviceForm() {
 		$id = Session::get('device_id');
-		$dev = Device::get()->byID($id);
+		$dev = $this->Parent()->Devices()->byID($id);
 		$edit = false;
 
 		$fields = new FieldList(
@@ -365,13 +364,15 @@ class DevicePage_Controller extends Page_Controller {
 
 		$dev->write();
 
+        $this->Parent()->Devices()->add($dev);
+
 		Session::clear('category_id');
 
 		return $this->redirect($this->Link().'edit/'.$dev->ID);
 	}
 
 	public function edit_device_action($data, Form $form) {
-		$dev = Device::get()->byID(Session::get('device_id'));
+		$dev = $this->Parent()->Devices()->byID(Session::get('device_id'));
 		Session::clear('device_id');
 		$form->saveInto($dev);
 
@@ -383,7 +384,7 @@ class DevicePage_Controller extends Page_Controller {
 
 	function delete_device_action($data, $form) {
 		Session::clear('device_id');
-		$dev = Device::get()->byID($data['DeviceID']);
+		$dev = $this->Parent()->Devices()->byID($data['DeviceID']);
 
 		$dev->Active = '0';
 
@@ -414,7 +415,7 @@ class DevicePage_Controller extends Page_Controller {
 	public function barcode_search_action($data, $form) {
 		$barcode = $data['Barcode'];
 
-		$result = Device::get()->filter(array('Barcode'=>$barcode));
+		$result = $this->Parent()->Devices()->filter(array('Active' => '1', 'Barcode'=>$barcode));
 
 		if($result->count() == 1) {
 			$dev = $result[0];

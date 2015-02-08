@@ -15,7 +15,7 @@ class CategoryPage_Controller extends Page_Controller {
 		'DeleteForm');
 
 	public function Categories() {
-		return DeviceCategory::get()->filter(array('Active'=>'1'))->sort('Name');
+		return $this->Parent()->DeviceCategories()->filter(array('Active'=>'1'))->sort('Name');
 	}
 
 	public function add($request) {
@@ -47,7 +47,7 @@ class CategoryPage_Controller extends Page_Controller {
 		$edit = false;
 
 		if(!empty($id)) {
-			$sup = DeviceCategory::get()->byID($id);
+			$sup = $this->Parent()->DeviceCategories()->byID($id);
 			$edit = true;
 		}
 
@@ -84,7 +84,7 @@ class CategoryPage_Controller extends Page_Controller {
 	}
 
 	function DeleteForm() {
-		$sup = DeviceCategory::get()->byID(Session::get('supplier_id'));
+		$sup = $this->Parent()->DeviceCategories()->byID(Session::get('supplier_id'));
 
 		$fields = new FieldList(
 				HiddenField::create('SupplierID', '', $sup->ID),
@@ -100,7 +100,7 @@ class CategoryPage_Controller extends Page_Controller {
 	}
 
 	function edit_supplier_action($data, $form) {
-		$sup = DeviceCategory::get()->byID(Session::get('supplier_id'));
+		$sup = $this->Parent()->DeviceCategories()->byID(Session::get('supplier_id'));
 
 		$form->saveInto($sup);
 
@@ -116,12 +116,14 @@ class CategoryPage_Controller extends Page_Controller {
 
 		$sup->write();
 
+        $this->Parent()->DeviceCategories()->add($sup);
+
 		return $this->redirect('index');
 	}
 
 	function delete_supplier_action($data, $form) {
 		Session::clear('supplier_id');
-		$sup = DeviceCategory::get()->byID($data["SupplierID"]);
+		$sup = $this->Parent()->DeviceCategories()->byID($data["SupplierID"]);
 
 		$sup->Active = '0';
 

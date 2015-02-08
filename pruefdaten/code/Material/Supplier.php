@@ -17,6 +17,8 @@ class Supplier extends MaterialDataObject {
 
 	static $has_many = array('Devices' => 'Device');
 
+    static $has_one = array('HolderPage' => 'PruefdatenParentPage');
+
 	public function DropDownName() {
 		$str = $this->Name;
 

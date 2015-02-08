@@ -15,7 +15,7 @@ class CheckTypePage_Controller extends Page_Controller {
 		'DeleteForm');
 
 	public function CheckTypes() {
-		return CheckType::get()->filter(array('Active'=>'1'));
+		return $this->Parent()->CheckTypes()->filter(array('Active'=>'1'));
 	}
 
 	public function add($request) {
@@ -47,7 +47,7 @@ class CheckTypePage_Controller extends Page_Controller {
 		$edit = false;
 
 		if(!empty($id)) {
-			$sup = CheckType::get()->byID($id);
+			$sup = $this->Parent()->CheckTypes()->byID($id);
 			$edit = true;
 		}
 
@@ -84,7 +84,7 @@ class CheckTypePage_Controller extends Page_Controller {
 	}
 
 	function DeleteForm() {
-		$sup = CheckType::get()->byID(Session::get('type_id'));
+		$sup = $this->Parent()->CheckTypes()->byID(Session::get('type_id'));
 
 		$fields = new FieldList(
 				HiddenField::create('CheckTypeID', '', $sup->ID),
@@ -100,7 +100,7 @@ class CheckTypePage_Controller extends Page_Controller {
 	}
 
 	function edit_type_action($data, $form) {
-		$sup = CheckType::get()->byID(Session::get('type_id'));
+		$sup = $this->Parent()->CheckTypes()->byID(Session::get('type_id'));
 
 		$form->saveInto($sup);
 
@@ -116,12 +116,14 @@ class CheckTypePage_Controller extends Page_Controller {
 
 		$sup->write();
 
+        $this->Parent()->CheckTypes()->add($sup);
+
 		return $this->redirect('index');
 	}
 
 	function delete_type_action($data, $form) {
 		Session::clear('type_id');
-		$sup = CheckType::get()->byID($data["CheckTypeID"]);
+		$sup = $this->Parent()->CheckTypes()->byID($data["CheckTypeID"]);
 
 		$sup->Active = '0';
 

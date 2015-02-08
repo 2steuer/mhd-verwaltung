@@ -7,4 +7,5 @@ class CheckType extends MaterialDataObject {
 			'Description' => 'Text'
 		);
 
+    static $has_one = array('HolderPage' => 'PruefdatenParentPage');
 }

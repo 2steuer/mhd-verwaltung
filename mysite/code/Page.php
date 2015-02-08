@@ -1,28 +1,6 @@
 <?php
 class Page extends SiteTree {
 
-	private static $db = array(
-		'NotesEnabled' => 'Boolean',
-		'NotesText' => 'Text'
-	);
-
-	private static $has_one = array(
-		'NotesParent' => 'Page'
-	);
-
-	public function getCMSFields() {
-		$fields = parent::getCMSFields();
-
-		$fields->addFieldToTab('Root.Notes', CheckBoxField::create('NotesEnabled', 'Notizzettel anzeigen'));
-		$fields->addFieldToTab('Root.Notes', new TreeDropdownField(	
-					"NotesParentID", 
-					'Speicherort der Notizen', 
-					"SiteTree"
-				));
-	
-		return $fields;
-	}
-
 }
 class Page_Controller extends ContentController {
 
@@ -60,31 +38,6 @@ class Page_Controller extends ContentController {
 
 
 
-	}
-
-	public function NoteForm() {
-		$id = ($this->NotesParentID) ? $this->NotesParentID : $this->ID;
-
-		$obj = Page::get()->byID($id);
-
-		$fields = new FieldList(
-			TextAreaField::create('NotesText', 'Notizen:')
-				->setValue($obj->NotesText)
-		);
-
-		$actions = new FieldList(FormAction::create('saveNotes','Speichern'));
-
-		return new Form($this, 'NoteForm', $fields, $actions);
-	}
-
-	public function saveNotes($data, $form) {
-		$id = ($this->NotesParentID) ? $this->NotesParentID : $this->ID;
-
-		$obj = Page::get()->byID($id);
-		$form->saveInto($obj);
-		$obj->write();
-
-		return $this->redirectBack();
 	}
 
 }

@@ -7,7 +7,7 @@
  */
 
 class UpdateToMultisiteController extends Controller {
-    static $allowed_actions = array('lager' => 'ADMIN');
+    static $allowed_actions = array('lager' => 'ADMIN', 'pruefdaten' => 'ADMIN');
 
     public function lager($request) {
         $pageID = $request->param('PageID');
@@ -31,6 +31,35 @@ class UpdateToMultisiteController extends Controller {
         foreach($center as $cc) {
             $cc->HolderPageID =$pageID;
             $cc->write();
+        }
+    }
+
+    public function pruefdaten($request) {
+        $pageID = $request->param('PageID');
+
+        $devs = Device::get();
+        $checktypes = CheckType::get();
+        $cats = DeviceCategory::get();
+        $supps = Supplier::get();
+
+        foreach($devs as $record) {
+            $record->HolderPageID = $pageID;
+            $record->write();
+        }
+
+        foreach($checktypes as $record) {
+            $record->HolderPageID = $pageID;
+            $record->write();
+        }
+
+        foreach($cats as $record) {
+            $record->HolderPageID = $pageID;
+            $record->write();
+        }
+
+        foreach($supps as $record) {
+            $record->HolderPageID = $pageID;
+            $record->write();
         }
     }
 } 

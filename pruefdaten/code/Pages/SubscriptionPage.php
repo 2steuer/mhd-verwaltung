@@ -9,7 +9,7 @@ class SubscriptionPage_Controller extends Page_Controller {
 	static $allowed_actions = array('index', 'SubscriptionForm');
 
 	public function Categories() {
-		return DeviceCategory::get()->filter(array('Active'=>'1'))->sort('Name');
+		return $this->Parent()->DeviceCategories()->filter(array('Active'=>'1'))->sort('Name');
 	}
 
 	public function Saved() {

@@ -12,7 +12,8 @@ class Device extends MaterialDataObject {
 		);
 
 	static $has_one = array(
-			'Category' => 'DeviceCategory'
+			'Category' => 'DeviceCategory',
+            'HolderPage' => 'PruefdatenParentPage'
 		);
 	
 	
