@@ -21,6 +21,7 @@ class ResourcePage_Controller extends GenericModelSubpagePage_Controller {
     public function init() {
         parent::init();
 
+        Requirements::javascript('lager/js/barcode_scan.js');
         Requirements::javascriptTemplate("lager/js/fetch_barcode.js", array('AjaxBarcodeUrl' => $this->Link('getbarcode')));
         Requirements::javascript("lager/js/resource_checkboxes.js");
     }
@@ -65,7 +66,7 @@ class ResourcePage_Controller extends GenericModelSubpagePage_Controller {
         Requirements::clear();
         require_once("../thirdparty/mpdf/mpdf.php");
 
-        $articles = Resource::get()->filter(array('Active' => '1', 'ID' => $request->postVar('SelectedResources')));
+        $articles = $this->Parent()->Resources()->filter(array('Active' => '1', 'ID' => $request->postVar('SelectedResources')));
 
         $dat = new ArrayData(array('Articles' => $articles));
 

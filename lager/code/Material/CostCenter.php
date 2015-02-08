@@ -23,6 +23,7 @@ class CostCenter extends MaterialDataObject {
 		$fields = parent::getFrontendFields($params);
 
 		$fields->removeByName('Active');
+        $fields->removeByName('HolderPageID');
 
 		return $fields;
 	}

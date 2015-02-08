@@ -15,7 +15,7 @@ class ReportPage_Controller extends Page_Controller {
                 ->setSource(array('in' => 'Wareneingang', 'out' => 'Warenausgang'))
                 ->setValue('out'),
             DropDownField::create('CostCenter', 'Kostenstelle')
-                ->setSource(CostCenter::get()->filter('Active', '1')->map('ID', 'Name')),
+                ->setSource($this->Parent()->CostCenters()->filter('Active', '1')->map('ID', 'Name')),
             DateField::create('StartDate', 'Bericht von...')
                 ->setConfig('showcalendar', true)
                 ->setValue("01.01.".date('Y')),

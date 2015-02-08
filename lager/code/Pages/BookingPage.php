@@ -27,6 +27,12 @@ class BookingPage_Controller extends Page_Controller {
 
 		);
 
+    public function init() {
+        parent::init();
+
+        Requirements::javascript('lager/js/barcode_scan.js');
+    }
+
 	/*
 	 * Creating a new Booking
 	*/
@@ -315,7 +321,7 @@ class BookingPage_Controller extends Page_Controller {
 				->setSource(array('in' => 'Wareneingang', 'out' => 'Warenausgang'))
 				->setValue('out'),
 			DropDownField::create('CostCenterID', 'Kostenstelle')
-				->setSource(CostCenter::get()->filter('Active', '1')->map('ID', 'Name')),
+				->setSource($this->Parent()->CostCenters()->filter('Active', '1')->map('ID', 'Name')),
 			DateField::create('Date', 'Datum des Vorgangs')
 				->setConfig('showcalendar', true)
 				->setValue(date('d.m.Y')),

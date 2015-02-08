@@ -58,7 +58,7 @@ class Page_Controller extends ContentController {
         Requirements::javascript('mysite/js/jquery-1.11.0.min.js');
         Requirements::javascript('mysite/js/modernizr-2.6.2.min.js');
 
-        Requirements::javascript('lager/js/barcode_scan.js');
+
 
 	}
 
