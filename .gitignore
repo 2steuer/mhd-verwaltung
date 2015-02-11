@@ -5,3 +5,4 @@ assets
 /.idea
 thirdparty
 /mysite/_db.php
+.htaccess
