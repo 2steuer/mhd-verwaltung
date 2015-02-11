@@ -26,19 +26,19 @@ class SendEmailController extends Controller {
 					foreach($device->Checks()->filter(array('Active' => '1')) as $check) {
 						$level = $check->CheckAlert();
 
-                        print("\t\t\tCheck: " . $check->TypeName() . " (".$level.")");
+                        print("\t\t\tCheck: " . $check->TypeName() . " (".$level.")\n");
 
 						if($level > 0) {
 
-                            print("\tDevice " . $device->Name . " - " . $level . "\n");
+                            print("\t\t\t\tDevice " . $device->Name . " - ".$check->TypeName()." - " . $level . "\n");
 
 							if(!$this->wasAlreadySent($member->ID, $check->ID, $level)) {
-								print("\t\t\tNot sent jet...\n");
+								print("\t\t\t\tNot sent jet...\n");
                                 $checklist[$level]->add($check);
 								$this->addSendNotification($member->ID, $check->ID, $level);
 							}
                             else {
-                                print("\t\tAlready sent.\n");
+                                print("\t\t\t\tAlready sent.\n");
                             }
 						}
 					}
