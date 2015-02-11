@@ -4,3 +4,4 @@ assets
 /framework/sserrors.txt
 /.idea
 thirdparty
+/mysite/_db.php
