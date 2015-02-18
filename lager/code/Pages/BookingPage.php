@@ -165,11 +165,11 @@ class BookingPage_Controller extends Page_Controller {
      */
     public function updateCounts($request) {
         $counts = $request->postVar('counts');
-        $booking = $request->param('ID');
+        $booking = $this->Parent()->Bookings()->byID($request->param('ID'));
 
         foreach($counts as $id=>$count) {
-            $entry = $this->Parent()->Bookings()->byID($id);
-            if($entry->BookingID != $booking) {
+            $entry = $booking->Entries()->byID($id);
+            if($entry->BookingID != $booking->ID) {
                 return $this->httpError(500, 'Fehler, Angriff erkannt!');
             }
             $entry->Count = $count;
@@ -178,7 +178,7 @@ class BookingPage_Controller extends Page_Controller {
 
         Session::set('resource_message', 'Artikelmengen gespeichert.');
 
-        return $this->redirect($this->Link().'edit/'.$booking);
+        return $this->redirect($this->Link().'edit/'.$booking->ID);
     }
 
     /*
