@@ -6,3 +6,4 @@ assets
 thirdparty
 /mysite/_db.php
 .htaccess
+/silverstripe-cache
