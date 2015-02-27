@@ -15,24 +15,29 @@ $Form
 
 
 <form method="post" action="{$Top.Link}updateCounts/$ID">
-<table class="resource_list">
+<table class="resource_list" id="booking-entries-table">
+    <thead>
     <tr>
         <th>Artikel</th>
         <th>Anzahl</th>
         <th>Entfernen</th>
     </tr>
-
+    </thead>
+<tbody id="entries-table-body">
     <% loop Entries %>
-        <tr class="$EvenOdd">
-            <td>$Resource.Name</td>
+        <tr class="$EvenOdd" id="entry-$ID">
+            <td class="name_col">$Resource.Name</td>
             <td class="count_col"><input type="number" value="$Count" name="counts[$ID]" /></td>
             <td class="icon_col"><a href="{$Top.Link}deleteentry/$ID"><img src="mysite/img/trash.png" alt="Eintrag entfernen" /></a></td>
         </tr>
     <% end_loop %>
+</tbody>
+    <tfoot>
     <tr>
         <td></td>
         <td><input type="submit" value="Speichern" /></td>
     </tr>
+    </tfoot>
 </table>
 </form>
 <% end_with %>

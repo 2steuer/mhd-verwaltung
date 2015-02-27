@@ -186,7 +186,6 @@ class BookingPage_Controller extends Page_Controller {
      */
     public function quickAdd($data, $form) {
         $booking = $this->Parent()->Bookings()->byID($data['BookingID']);
-
         $resource = $this->Parent()->Resources()->filter(array('Active' => '1', 'Barcode' => $data['Barcode']))->First();
 
         if($resource) {
@@ -213,6 +212,43 @@ class BookingPage_Controller extends Page_Controller {
             Session::set('resource_message', 'Artikel nicht gefunden!');
             return $this->redirect($this->Link().'edit/'.$booking->ID);
         }
+    }
+
+    /*
+     * Scan Barcode - AJAX
+     */
+
+    public function scanbarcode($request) {
+        $booking = $this->Parent()->Bookings()->byID($request->postVar('BookingID'));
+
+        $resource = $this->Parent()->Resources()->filter(array('Active' => '1', 'Barcode' => $request->postVar('Barcode')))->First();
+
+        if($resource) {
+            if($entry = $booking->Entries()->find('ResourceID', $resource->ID)) {
+                $entry->Count++;
+                $entry->write();
+            }
+            else {
+                $entry = new BookingEntry();
+                $entry->ResourceID = $resource->ID;
+                $entry->Count = 1;
+
+                $booking->Entries()->add($entry);
+
+                $entry->write();
+            }
+
+            $booking->write();
+        }
+
+        $return = array();
+
+        foreach($booking->Entries() as $entry) {
+            $add = array('EntryID' => $entry->ID, 'Name' => $entry->Article()->Name, 'Count' => $entry->Count);
+            $return[] = $add;
+        }
+
+        return json_encode($return);
     }
 
     /*
