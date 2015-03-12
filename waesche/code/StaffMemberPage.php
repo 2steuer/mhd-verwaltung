@@ -42,7 +42,17 @@ class StaffMemberPage_Controller extends GenericManagementPage_Controller {
         $id = $request->param('ID');
         $member = StaffMember::get()->byID($id);
 
-        return $this->customise(array('StaffMember' => $member));
+        $arr = new ArrayData(['StaffMember' => $member, 'ConfirmationText' => $this->ConfirmationText]);
+
+        Requirements::clear();
+        require_once("../thirdparty/mpdf/mpdf.php");
+
+        $pdf = new mPDF();
+        $pdf->ignore_invalid_utf8 = true;
+        $pdf->WriteHTML($arr->renderWith(['StaffMemberPage_printconfirmation']));
+        $pdf->Output();
+
+        return;
     }
 
 }

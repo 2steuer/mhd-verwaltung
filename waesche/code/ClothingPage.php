@@ -71,7 +71,18 @@ class ClothingPage_Controller extends GenericManagementPage_Controller {
         $clothes = Clothing::get()->filter(array('Active' => '1', 'ID' => $oldrequest->postVar('SelectPrint')));
         $staffmember = StaffMember::get()->byID($oldrequest->postVar('StaffMemberID'));
 
-        return $this->renderWith(array('Clothing_printchangerequest', 'Page'), array('Clothings' => $clothes, 'NewStaffMember' => $staffmember));
+        $arr = new ArrayData(['Clothings' => $clothes, 'NewStaffMember' => $staffmember]);
+
+        Requirements::clear();
+        require_once("../thirdparty/mpdf/mpdf.php");
+
+        $pdf = new mPDF();
+        $pdf->ignore_invalid_utf8 = true;
+        $pdf->WriteHTML($arr->renderWith(['Clothing_printchangerequest']));
+        $pdf->Output();
+
+        return;
+        //return $this->renderWith(array('Clothing_printchangerequest', 'Page'), array('Clothings' => $clothes, 'NewStaffMember' => $staffmember));
     }
 
     public function removemarked($request) {
