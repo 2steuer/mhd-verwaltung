@@ -67,6 +67,7 @@ D-21509 Glinde <br  />
     <table id="clothinglist">
         <tr>
             <th>Typ</th>
+            <th>Artikelnummer</th>
             <th>Größe</th>
             <th>Träger</th>
             <th>Träger-Nr</th>
@@ -76,6 +77,7 @@ D-21509 Glinde <br  />
         <% loop $Clothings %>
             <tr class="$EvenOdd">
                 <td>$Type.Name</td>
+                <td>$Type.ArticleNumber</td>
                 <td>$Size</td>
                 <td>$Owner.Name</td>
                 <td>$Owner.StaffNumber</td>

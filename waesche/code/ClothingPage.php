@@ -71,6 +71,12 @@ class ClothingPage_Controller extends GenericManagementPage_Controller {
         $clothes = Clothing::get()->filter(array('Active' => '1', 'ID' => $oldrequest->postVar('SelectPrint')));
         $staffmember = StaffMember::get()->byID($oldrequest->postVar('StaffMemberID'));
 
+        /*
+        $newcreq = ChangeRequest::create();
+        $newcreq->NewStaffMemberID = $staffmember->ID;
+        $newcreq->Clothings()->add($clothes);
+        $newcreq->save();
+*/
         $arr = new ArrayData(['Clothings' => $clothes, 'NewStaffMember' => $staffmember]);
 
         Requirements::clear();
