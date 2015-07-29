@@ -13,7 +13,7 @@ class Link extends MaterialDataObject {
 	static $singular_name = 'Link';
 	static $plural_name = 'Links';
 
-    static $sort_field = 'ID';
+    static $sort_field = 'ID DESC';
 
 	static $field_labels = array('Name' => 'Bezeichnung', 'Link' => 'Link');
 
