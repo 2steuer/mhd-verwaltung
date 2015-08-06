@@ -2,8 +2,8 @@
 
 class Link extends MaterialDataObject {
 	static $db = array(
-		'Name' => 'Varchar',
-		'Link' => 'Varchar'
+		'Name' => 'Varchar(200)',
+		'Link' => 'Varchar(200)'
 	);
 
 	static $has_many = array(
